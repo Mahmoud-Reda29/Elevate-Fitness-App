@@ -4,7 +4,7 @@ export default function Homepage() {
   const t = useTranslations();
   return (
     <div>
-      <h1 className=" text-9xl bg-custom-orange-900">homepage</h1>
+      <h1 className="bg-custom-orange-900 text-9xl">homepage (hodaaaa)</h1>
       {t("homepage")}
     </div>
   );
