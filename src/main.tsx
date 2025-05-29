@@ -3,11 +3,19 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import { AppProviders } from "./providers/AppProviders.tsx";
-import messagesEn from "./i18n/en.ts";
+// import messagesEn from "./i18n/en.ts";
+import enMessages from "./i18n/en.json";
+import arMessages from "./i18n/ar.json";
 
+const locale = navigator.language.startsWith("ar") ? "ar" : "en";
+
+const messages = {
+  en: enMessages,
+  ar: arMessages,
+};
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppProviders locale="en" messages={messagesEn}>
+    <AppProviders locale={locale} messages={messages[locale]}>
       <App />
     </AppProviders>
   </StrictMode>

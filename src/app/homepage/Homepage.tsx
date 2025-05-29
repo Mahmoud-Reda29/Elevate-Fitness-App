@@ -1,3 +1,6 @@
+import { useTranslations } from "use-intl";
+
 export default function Homepage() {
-  return <div>Homepage</div>;
+  const t = useTranslations();
+  return <div>{t("homepage")}</div>;
 }

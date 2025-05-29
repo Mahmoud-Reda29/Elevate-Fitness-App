@@ -1,51 +1,61 @@
-import { useState } from "react";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Error from "./Error";
 import AppLayout from "./AppLayout";
 import Homepage from "./app/homepage/Homepage";
-// import { useTranslations } from "use-intl";
+import About from "./app/about/About";
+import enMessages from "./i18n/en.json";
+import arMessages from "./i18n/ar.json";
+import { useParams } from "react-router-dom";
+import { IntlProvider } from "use-intl";
+
+// Messages map
+const messages = {
+  en: enMessages,
+  ar: arMessages,
+};
+
+// This wrapper reads the route param and wraps children with IntlProvider
+function LocaleWrapper({ children }: { children: React.ReactNode }) {
+  const { lang } = useParams();
+  const locale = lang && (lang === "en" || lang === "ar") ? lang : "en";
+
+  return (
+    <IntlProvider locale={locale} messages={messages[locale]}>
+      {children}
+    </IntlProvider>
+  );
+}
 
 const router = createBrowserRouter([
   {
-    element: <AppLayout />,
+    // Root path that redirects to default language
+    path: "/",
+    element: <Navigate to="/en" replace />,
+  },
+  {
+    path: "/:lang",
+    element: (
+      <LocaleWrapper>
+        <AppLayout />
+      </LocaleWrapper>
+    ),
     errorElement: <Error />,
-
     children: [
       {
-        path: "/",
+        index: true,
         element: <Homepage />,
+        errorElement: <Error />,
+      },
+      {
+        path: "about",
+        element: <About />,
         errorElement: <Error />,
       },
     ],
   },
 ]);
 
-function App() {
-  const [count, setCount] = useState(0);
-  // const t = useTranslations();
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          {/* <img src={reactLogo} className="logo react" alt="React logo" /> */}
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-      <RouterProvider router={router} />;
-    </>
-  );
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
