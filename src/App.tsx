@@ -10,6 +10,7 @@ import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import AuthLayout from "./app/auth/layout";
 import LoginPage from "./app/auth/login/page";
+import SignupPage from "./app/auth/signup/page";
 
 // Messages map
 const messages = {
@@ -55,9 +56,11 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "auth",
         element: <AuthLayout />,
-        children: [{ path: "login", element: <LoginPage /> }],
+        children: [
+          { path: "login", element: <LoginPage /> },
+          { path: "signup", element: <SignupPage /> },
+        ],
       },
     ],
   },
