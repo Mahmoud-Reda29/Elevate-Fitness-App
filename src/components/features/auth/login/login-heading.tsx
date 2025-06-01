@@ -1,7 +1,7 @@
 
 export default function LoginHeading() {
   return (
-    <div className="flex flex-col justify-center items-center gap-7">
+    <div className="flex flex-col gap-7 mb-14">
       {/* Heading */}
       <p className="text-custom-white-900 text-sm">Hey There,</p>
 
