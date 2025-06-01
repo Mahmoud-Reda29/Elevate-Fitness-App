@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslations } from "use-intl";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import LoginHeading from "./login-heading";
 
 export default function LoginForm() {
   // Navigation
@@ -43,17 +44,21 @@ export default function LoginForm() {
   }
 
   return (
+    <div>
+      {/* Login heading */}
+      <LoginHeading/>
+
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="border rounded-4xl p-10 border-custom-gray-500 w-[486px]">
         {/* Email */}
         <FormField
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mb-4">
               <FormControl>
                 {/* Input */}
-                <Input {...field} type="email" placeholder={t("email")} />
+                <Input {...field} type="email" placeholder={t("email")} className="border border-custom-gray-600 h-12 rounded-2xl placeholder:text-custom-gray-500"/>
               </FormControl>
             </FormItem>
           )}
@@ -64,10 +69,10 @@ export default function LoginForm() {
           control={form.control}
           name="password"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="mb-4">
               <FormControl>
                 {/* Input */}
-                <Input {...field} type="password" placeholder={t("password")} />
+                <Input {...field} type="password" placeholder={t("password")} className="border border-custom-gray-600 h-12 rounded-2xl placeholder:text-custom-gray-500"/>
               </FormControl>
             </FormItem>
           )}
@@ -77,10 +82,12 @@ export default function LoginForm() {
         <Button
           disabled={isPending || (!form.formState.isValid && form.formState.isSubmitted)}
           type="submit"
+          className="bg-custom-orange-900 text-custom-white-900 w-full h-12 font-extrabold rounded-2xl cursor-pointer"
         >
           {t("login")}
         </Button>
       </form>
     </Form>
+    </div>
   );
 }

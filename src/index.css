@@ -8,4 +8,8 @@
   --color-*: initial;
   /* main color orange */
   --color-custom-orange-900: #ff4100;
+  --color-custom-black-900: #000000;
+  --color-custom-white-900: #FFFFFF;
+  --color-custom-gray-500: #D3D3D3;
+  --color-custom-gray-600: #D9D9D9;
 }
