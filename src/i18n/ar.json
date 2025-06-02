@@ -7,6 +7,8 @@
 "or":"او",
 "forget-password":"نسيت كلمة المرور؟",
 "failed-login": "فشل تسجيل الدخول",
-"success-login": "تم تسجيل الدخول بنجاح"
+"success-login": "تم تسجيل الدخول بنجاح",
+"hey-there":"أهلا,",
+"welcome-back":"بعودتك!"
 
  }

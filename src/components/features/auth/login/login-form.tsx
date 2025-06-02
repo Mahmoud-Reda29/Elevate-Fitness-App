@@ -56,7 +56,7 @@ export default function LoginForm() {
           className="border-custom-gray-500 w-[486px] rounded-4xl border p-10"
         >
           {/* Heading */}
-          <h3 className="text-custom-white-900 mb-4 text-center text-xl font-extrabold">Login</h3>
+          <h3 className="text-custom-white-900 mb-4 text-center text-xl font-extrabold">{t("login")}</h3>
 
           {/* Email */}
           <FormField

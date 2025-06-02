@@ -1,4 +1,6 @@
 import axios from "axios";
+import Cookies from "js-cookie";
+
 export async function LoginAuth(value: LoginFields) {
   const response = await axios.post(
     "https://fitness.elevateegy.com/api/v1/auth/signin",
@@ -11,7 +13,10 @@ export async function LoginAuth(value: LoginFields) {
     throw new Error("Failed Login");
   }
 
-  localStorage.setItem("userToken", payload.token);  
+  // Store token in cookies
+  Cookies.set("userToken", payload.token,{
+    secure:true
+  })
 
   return payload;
 }

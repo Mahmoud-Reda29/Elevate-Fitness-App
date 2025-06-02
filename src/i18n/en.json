@@ -10,5 +10,7 @@
   "or":"Or",
   "forget-password":"Forget Password?",
   "failed-login":"Failed Login",
-  "success-login":"login successful"
+  "success-login":"login successful",
+  "hey-there":"Hey There,",
+  "welcome-back":"WELCOME BACK!"
 }
