@@ -1,1 +1,8 @@
-{ "homepage": "صفحه الهووم" }
+{
+  "homepage": "صفحه الهووم",
+  "email-required": "البريد الإلكتروني مطلوب",
+  "submit-btn": "يُقدِّم",
+  "email": "بريد إلكتروني",
+  "forget-password-title": "ننسى كلمة المرور",
+  "sent-otp-btn": "أرسلت OTP"
+}

@@ -11,6 +11,7 @@ import { IntlProvider } from "use-intl";
 import AuthLayout from "./app/auth/layout";
 import LoginPage from "./app/auth/login/page";
 import SignupPage from "./app/auth/signup/page";
+import ForgetPassword from "./app/auth/forget-password/page";
 
 // Messages map
 const messages = {
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
         children: [
           { path: "login", element: <LoginPage /> },
           { path: "signup", element: <SignupPage /> },
+          { path: "forget-password", element: <ForgetPassword /> },
         ],
       },
     ],

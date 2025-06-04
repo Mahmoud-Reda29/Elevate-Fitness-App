@@ -13,18 +13,26 @@ export default function AuthLayout() {
       {/* Overlay Layer */}
       <div className="bg-custom-overlay absolute inset-0 z-1 backdrop-blur-2xl"></div>
       {/* Content */}
-      <div className="relative z-55 flex h-screen flex-col md:flex-row md:items-center">
+      <div className="relative z-55 flex h-screen lg:flex-row lg:items-center lg:justify-center">
         {/* Left Side */}
-        <div className="border-r-custom-orange-900 flex h-screen flex-1 items-center justify-center border-r-1 shadow-[0px_4px_79.8px_47px_rgba(0,0,0,0.25)]">
-          <div className="flex max-h-[721px] w-2xl flex-col items-center justify-center p-8">
+        <div className="border-r-custom-orange-900 hidden h-screen flex-1 items-center justify-center border-r-1 shadow-[0px_4px_79.8px_47px_rgba(0,0,0,0.25)] lg:flex">
+          <div className="flex w-2xl flex-col items-center justify-center p-8">
             {/* Brand image */}
             <div>
-              <img src="/assests/images/brand.png" alt="brand image" className="h-[151px] w-56" />
+              <img
+                src="/assests/images/brand.png"
+                alt="brand image"
+                className="h-36 w-56 lg:w-40"
+              />
             </div>
 
             {/*   Person image */}
             <div>
-              <img src="/assests/images/person.png" alt="person image" className="h-[474px] w-xl" />
+              <img
+                src="/assests/images/person.png"
+                alt="person image"
+                className="h-96 w-lg lg:w-md"
+              />
             </div>
           </div>
         </div>
