@@ -5,10 +5,7 @@
 */
 
 @theme {
+  --color-*: initial;
   /* main color orange */
   --color-custom-orange-900: #ff4100;
-  --color-custom-gray-400: #d3d3d3;
-  --color-custom-gray-900: #242424;
-  --color--custom-overlay: #24242499;
-  --color-white: #ffffff;
 }
