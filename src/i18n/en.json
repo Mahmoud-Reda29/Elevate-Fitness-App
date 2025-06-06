@@ -1,5 +1,12 @@
 {
   "hello": "Hello",
   "welcome": "Welcome to Elevate Fitness App",
-  "homepage": "homepage"
+  "homepage": "homepage",
+  "email-required": "Email is required",
+  "submit-btn": "Submit",
+  "forget-success-noti": "OTP sent to your email",
+  "email": "Email",
+  "forget-password-title": "Forget password",
+  "email-label": "Enter Your Email",
+  "sent-otp-btn": "Sent OTP"
 }
