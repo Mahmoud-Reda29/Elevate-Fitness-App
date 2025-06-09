@@ -8,6 +8,7 @@ import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
+import Signup from "./app/Auth/signup/signup";
 
 // Messages map
 const messages = {
@@ -50,6 +51,11 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+        errorElement: <Error />,
+      },
+      {
+        path: "signup",
+        element: <Signup />,
         errorElement: <Error />,
       },
     ],
