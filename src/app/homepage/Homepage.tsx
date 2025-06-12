@@ -1,13 +1,14 @@
 import { useTranslations } from "use-intl";
+import HeroSection from "./_components/Hero-section";
 
 export default function Homepage() {
   // Translation
   const t = useTranslations();
 
   return (
-    <div>
-      <h1 className="bg-custom-orange-900 text-9xl">homepage (hodaaaa elevate)</h1>
+    <>
+      <HeroSection />
       {t("homepage")}
-    </div>
+    </>
   );
 }
