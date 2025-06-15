@@ -1,1 +1,14 @@
-{ "homepage": "صفحه الهووم" }
+{ "homepage": "صفحه الهووم",
+"email":"الايميل",
+"password":"كلمه السر",
+"login": "تسجيل الدخول",
+"register":"سجل الان",
+"no-account":"ليس لديك حساب بعد؟",
+"or":"او",
+"forget-password":"نسيت كلمة المرور؟",
+"failed-login": "فشل تسجيل الدخول",
+"success-login": "تم تسجيل الدخول بنجاح",
+"hey-there":"أهلا,",
+"welcome-back":"بعودتك!"
+
+ }

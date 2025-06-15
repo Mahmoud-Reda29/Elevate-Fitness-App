@@ -1,5 +1,16 @@
 {
   "hello": "Hello",
   "welcome": "Welcome to Elevate Fitness App",
-  "homepage": "homepage"
+  "homepage": "homepage",
+  "email":"Email",
+  "password":"Password",
+  "login":"Login",
+  "register":"Register",
+  "no-account":"Dont have an account yet ?",
+  "or":"Or",
+  "forget-password":"Forget Password?",
+  "failed-login":"Failed Login",
+  "success-login":"login successful",
+  "hey-there":"Hey There,",
+  "welcome-back":"WELCOME BACK!"
 }
