@@ -1,5 +1,6 @@
 import { useTranslations } from "use-intl";
 import HeroSection from "./_components/Hero-section";
+import AboutUs from "./_components/About-us";
 
 export default function Homepage() {
   // Translation
@@ -8,6 +9,7 @@ export default function Homepage() {
   return (
     <>
       <HeroSection />
+      <AboutUs />
       {t("homepage")}
     </>
   );

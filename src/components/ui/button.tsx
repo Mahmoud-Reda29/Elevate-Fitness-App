@@ -54,7 +54,7 @@ function Button({
           {...props}
         />
         <span className="bg-custom-orange-900 border-custom-white-800 absolute top-1.5 -right-3 rounded-full border-2">
-          <MdArrowOutward className="text-white" size={20} color="white" />
+          <MdArrowOutward className="text-white" size={20} />
         </span>
       </div>
     </>
