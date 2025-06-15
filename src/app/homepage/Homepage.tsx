@@ -8,7 +8,10 @@ export default function Homepage() {
 
   return (
     <>
+      {/* Hero section */}
       <HeroSection />
+
+      {/* About us */}
       <AboutUs />
       {t("homepage")}
     </>

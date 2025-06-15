@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useFormatter, useTranslations } from "use-intl";
 
 export default function HeroSection() {
+  const t = useTranslations();
+  const format = useFormatter();
+
   return (
     <section className="relative h-screen w-full xl:overflow-hidden">
       <div className="absolute inset-0 h-fit bg-[url('/images/hero-image.png')] bg-cover bg-center md:h-auto">
@@ -8,35 +12,42 @@ export default function HeroSection() {
           {/* Text Section */}
           <div className="text-custom-black-900 dark:text-custom-white-800 container max-w-xl space-y-6">
             <h1 className="text-center text-4xl font-bold lg:text-left">
-              Your body can <span className="text-custom-orange-900">stand almost</span> anything
+              {t("your-body-can")}
+              <span className="text-custom-orange-900"> {t("stand-almost")} </span>
+              {t("anything")}
             </h1>
             <div className="flex flex-col gap-16">
               <p className="before:bg-custom-orange-900 text-custom-black-900 dark:text-custom-white-800 relative pl-6 text-center text-lg before:absolute before:top-0 before:left-0 before:h-full before:w-1 lg:text-left">
-                It's your mind that needs convincing. Push past your limits, stay committed, and
-                watch as your body transform into powerhouse of strength and resilience. Start your
-                journey today & truly capable of!
+                {t("hero-pragraph")}
               </p>
 
               {/* Stats Section */}
               <div className="flex justify-center gap-8 lg:justify-start">
                 <div className="">
-                  <span className="text-2xl font-semibold">1200+</span>
-                  <p className="text-sm">Active Members</p>
+                  <span className="text-2xl font-semibold">
+                    {format.number(Number(1200), "digit")}+
+                  </span>
+                  <p className="text-sm">{t("active-members")}</p>
                 </div>
                 <div className="">
-                  <span className="text-2xl font-semibold">12+</span>
-                  <p className="text-sm">Certified Trainers</p>
+                  <span className="text-2xl font-semibold">
+                    {format.number(Number(12), "digit")}+
+                  </span>
+                  <p className="text-sm">{t("certified-trainers")}</p>
                 </div>
                 <div className="">
-                  <span className="text-2xl font-semibold">20+</span>
-                  <p className="text-sm">Year Of Experience</p>
+                  <span className="text-2xl font-semibold">
+                    {" "}
+                    {format.number(Number(20), "digit")}+
+                  </span>
+                  <p className="text-sm">{t("year-of-experience")}</p>
                 </div>
               </div>
 
               {/* buttons */}
               <div className="flex items-center gap-16">
-                <Button variant="default">Get Started</Button>
-                <Button variant="outline">Explore More</Button>
+                <Button variant="default">{t("get-started")}</Button>
+                <Button variant="outline">{t("explore-more")}</Button>
               </div>
             </div>
           </div>
