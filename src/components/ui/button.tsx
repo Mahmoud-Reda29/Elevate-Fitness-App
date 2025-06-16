@@ -10,7 +10,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-custom-orange-900 rounded-full   ",
+        default: "bg-custom-orange-900 rounded-full",
+        primary: "bg-custom-orange-900 rounded-full",
         destructive:
           "bg-destructive   hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
@@ -53,9 +54,11 @@ function Button({
           className={cn(buttonVariants({ variant, size, className }))}
           {...props}
         />
-        <span className="bg-custom-orange-900 border-custom-white-800 absolute top-1.5 -right-3 rounded-full border-2">
-          <MdArrowOutward className="text-white" size={20} />
-        </span>
+        {variant != "primary" && (
+          <span className="bg-custom-orange-900 border-custom-white-800 absolute top-1.5 -right-3 rounded-full border-2">
+            <MdArrowOutward className="text-white" size={20} />
+          </span>
+        )}
       </div>
     </>
   );
