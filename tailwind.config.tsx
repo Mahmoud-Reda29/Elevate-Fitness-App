@@ -4,11 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}", // for React
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        baloo: ['"Baloo Thambi 2"', "sans-serif"],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

@@ -2,28 +2,12 @@
 
 import type React from "react";
 import { CiDumbbell } from "react-icons/ci";
+import { useTranslations } from "use-intl";
 
 const BestWay: React.FC = () => {
-  const features = [
-    {
-      number: "01",
-      title: "Personalized Fitness Plans",
-      description:
-        "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress.",
-    },
-    {
-      number: "02",
-      title: "Results-Driven Focus",
-      description:
-        "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss.",
-    },
-    {
-      number: "03",
-      title: "State-Of-The-Art Equipment",
-      description:
-        "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type.",
-    },
-  ];
+  const t = useTranslations();
+
+  const features = t.raw("features") as { title: string; description: string }[];
 
   return (
     <section className="bg-custom-white-600 px-4 py-16">
@@ -41,35 +25,35 @@ const BestWay: React.FC = () => {
                       WebkitTextStroke: "1px #d3d3d3",
                     }}
                   >
-                    Why Us
+                    {t("why-us")}
                     <span className="text-custom-orange-900 font-baloo absolute top-12 left-18 z-20 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 text-xl uppercase md:text-xl">
                       <CiDumbbell className="text-4xl" />
-                      Why Us
+                      {t("why-us")}
                     </span>
                   </h1>
                 </div>
               </div>
 
               <h2 className="text-custom-black-700 text-4xl leading-tight font-bold md:text-5xl">
-                ELEVATE FITNESS WITH THE <span className="text-custom-orange-900">BEST WAY</span>{" "}
-                POSSIBLE
+                {t("elevate-fitness-with-the")}{" "}
+                <span className="text-custom-orange-900">{t("best-way")}</span> {t("possible")}
               </h2>
 
               <p className="text-custom-black-700 text-lg leading-relaxed">
-                We offer a fitness journey that's tailored to your goals, supported by professional
-                trainers and a welcoming community. Whether it's weight loss, strength building, or
-                overall wellness, our proven methods.
+                {t(
+                  "we-offer-a-fitness-journey-thats-tailored-to-your-goals-supported-by-professional-trainers-and-a-welcoming-community-whether-its-weight-loss-strength-building-or-overall-wellness-our-proven-methods",
+                )}
               </p>
             </div>
 
             {/* Features List */}
             <div className="space-y-6">
-              {features.map((feature) => (
-                <div key={feature.number} className="flex items-start space-x-4">
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div className="bg-custom-orange-900 flex h-12 w-12 items-center justify-center rounded-full">
                       <span className="text-custom-white-900 text-sm font-bold">
-                        {feature.number}
+                        {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>

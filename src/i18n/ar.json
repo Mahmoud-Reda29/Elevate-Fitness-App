@@ -1,1 +1,30 @@
-{ "homepage": "صفحه الهووم" }
+{
+  "homepage": "صفحه الهووم",
+  "workouts": "أعمال",
+  "fitness-class": "فئة اللياقة",
+  "transform-your-body-with-our": "تحويل جسمك مع لدينا",
+  "dynamic": "متحرك",
+  "upcoming-workouts": "التدريبات القادمة",
+  "loading-muscles": "تحميل العضلات",
+  "error-loading-muscles": "خطأ تحميل العضلات",
+  "explore": "يستكشف",
+  "why-us": "لماذا لنا",
+  "elevate-fitness-with-the": "رفع اللياقة مع",
+  "best-way": "أفضل طريقة",
+  "possible": "ممكن",
+  "we-offer-a-fitness-journey-thats-tailored-to-your-goals-supported-by-professional-trainers-and-a-welcoming-community-whether-its-weight-loss-strength-building-or-overall-wellness-our-proven-methods": "نحن نقدم رحلة للياقة البدنية مصممة خصيصًا لأهدافك ، بدعم من المدربين المحترفين ومجتمع الترحيب. \nسواء كان ذلك هو فقدان الوزن أو بناء القوة أو العافية بشكل عام ، فإن أساليبنا المثبتة.",
+  "features": [
+    {
+      "title": "خطط لياقة بدنية مخصصة",
+      "description": "نخصص كل تمرين ليناسب أهدافك ومستوى لياقتك لضمان أفضل تقدم ممكن."
+    },
+    {
+      "title": "تركيز على النتائج",
+      "description": "كل ما نقوم به مصمم لمساعدتك على تحقيق نتائج قابلة للقياس، سواء كنت تهدف إلى فقدان الوزن."
+    },
+    {
+      "title": "معدات متطورة",
+      "description": "نوفر أحدث المعدات الرياضية، من أجهزة الكارديو إلى الأوزان الحرة، لدعم جميع أنواع التمارين."
+    }
+  ]
+}

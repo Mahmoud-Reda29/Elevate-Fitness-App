@@ -8,7 +8,7 @@ import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
-import Signup from "./app/Auth/signup/signup";
+import Signup from "./app/Auth/signup/Signup";
 
 // Messages map
 const messages = {
