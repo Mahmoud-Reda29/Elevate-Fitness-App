@@ -52,7 +52,7 @@ export default function AboutUs() {
               {t("workout")}
               <span className="text-custom-orange-900 absolute flex items-center text-sm">
                 <CiDumbbell />
-                About us
+                {t("about-us")}
               </span>
             </h2>
             <h2 className="text-4xl leading-tight font-bold tracking-tight md:text-5xl">
