@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}", // for React
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        baloo: ['"Baloo Thambi 2"', "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
