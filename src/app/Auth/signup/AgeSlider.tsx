@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import "swiper/css";
+import { useTranslations } from "use-intl";
 
 const MIN_AGE = 18;
 const MAX_AGE = 60;
@@ -13,6 +14,7 @@ const AgeSlider: React.FC<AgeSliderProps> = ({ onAgeChange }) => {
   const [selectedAge, setSelectedAge] = useState<number>(25);
   const swiperRef = useRef<SwiperRef>(null);
   const ages = Array.from({ length: MAX_AGE - MIN_AGE + 1 }, (_, i) => MIN_AGE + i);
+  const t = useTranslations();
 
   const handleSlideChange = (swiper: { activeIndex: number }) => {
     const newAge = ages[swiper.activeIndex];
@@ -27,31 +29,19 @@ const AgeSlider: React.FC<AgeSliderProps> = ({ onAgeChange }) => {
       {/* Progress Indicator */}
       <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
         {/* Orange Arc */}
-        <svg className="absolute inset-0 h-full w-full rotate-[10deg]" viewBox="0 0 36 36">
-          <path
-            className="text-custom-orange-900"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="100"
-            strokeDashoffset="80"
-            d="M18 2
-     a 16 16 0 0 1 0 32
-     a 16 16 0 0 1 0 -32"
-          />
-        </svg>
-
+        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
         {/* Step Text */}
         <span className="text-custom-white-900 z-10 text-sm font-medium">2/6</span>
       </div>
       {/* Heading and Subheading */}
       <div className="text-center">
-        <h2 className="text-custom-white-900 my-4 text-2xl font-bold">HOW OLD ARE YOU?</h2>
-        <p className="text-custom-white-900 my-4">This Helps Us Create Your Personalized Plan</p>
+        <h2 className="text-custom-white-900 my-4 text-2xl font-bold">{t("how-old-are-you")}</h2>
+        <p className="text-custom-white-900 my-4">
+          {t("this-helps-us-create-your-personalized-plan-0")}
+        </p>
       </div>
       <div className="text-custom-orange-900 mb-4 text-lg font-semibold tracking-wide">
-        Years Old
+        {t("years-old")}
       </div>
       <div className="relative w-full">
         <Swiper

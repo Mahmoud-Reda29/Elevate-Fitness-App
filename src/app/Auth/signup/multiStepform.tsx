@@ -17,6 +17,7 @@ import WeightSlider from "./weightSlider";
 import HeightSlider from "./heightSlider";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
+import { useTranslations } from "use-intl";
 
 // Define the form data interface
 interface FormData {
@@ -133,6 +134,7 @@ const MultiStepForm: React.FC = () => {
     activityLevel: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const t = useTranslations();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showRePassword, setShowRePassword] = useState(false);
@@ -270,9 +272,9 @@ const MultiStepForm: React.FC = () => {
         <div className="z-10 w-full max-w-xl">
           <div className="rounded-2xl">
             <div className="text-custom-white-900 to-amber-500 p-6">
-              <p className="text-center text-lg">{step === 1 && "Hey There"}</p>
+              <p className="text-center text-lg">{step === 1 && t("hey-there")}</p>
               <h2 className="mx-auto flex justify-center text-4xl font-bold">
-                {step === 1 && "Create an Account"}
+                {step === 1 && t("create-an-account")}
               </h2>
             </div>
             <div>
@@ -284,7 +286,7 @@ const MultiStepForm: React.FC = () => {
                         <div className="px-8 py-4">
                           <div className="space-y-3">
                             <p className="text-custom-white-900 text-center text-xl font-semibold">
-                              Register
+                              {t("register")}
                             </p>
                             <div className="relative">
                               <input
@@ -294,7 +296,7 @@ const MultiStepForm: React.FC = () => {
                                 onChange={handleChange}
                                 required
                                 className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="First Name"
+                                placeholder={t("first-name")}
                               />
                               <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
                                 <FiUser />
@@ -308,7 +310,7 @@ const MultiStepForm: React.FC = () => {
                                 onChange={handleChange}
                                 required
                                 className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="Last Name"
+                                placeholder={t("last-name")}
                               />
                               <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
                                 <FiUser />
@@ -322,7 +324,7 @@ const MultiStepForm: React.FC = () => {
                                 onChange={handleChange}
                                 required
                                 className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="Email"
+                                placeholder={t("email")}
                               />
                               <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
                                 <MdOutlineMail />
@@ -337,7 +339,7 @@ const MultiStepForm: React.FC = () => {
                                 required
                                 minLength={8}
                                 className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="Password"
+                                placeholder={t("password")}
                               />
                               <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
                                 <IoLockClosedOutline />
@@ -358,7 +360,7 @@ const MultiStepForm: React.FC = () => {
                                 required
                                 minLength={8}
                                 className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder="Confirm Password"
+                                placeholder={t("confirm-password")}
                               />
                               <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
                                 <IoLockClosedOutline />
@@ -376,7 +378,7 @@ const MultiStepForm: React.FC = () => {
                               href="/forget-password"
                               className="text-custom-orange-900 inline-block cursor-pointer border-b pt-2.5 font-semibold"
                             >
-                              Forget Password?
+                              {t("forget-password")}
                             </a>
                           </div>
                           <div className="flex items-center justify-center py-2.5">
@@ -410,13 +412,13 @@ const MultiStepForm: React.FC = () => {
                               onClick={nextStep}
                               className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
                             >
-                              Register
+                              {t("register")}
                             </button>
                           </div>
                           <div className="text-custom-white-900 mt-2 text-center text-sm">
-                            Already Have An Account?{" "}
+                            {t("already-have-an-account")}
                             <a href="#" className="text-custom-orange-900 underline">
-                              Login
+                              {t("login")}
                             </a>
                           </div>
                         </div>
@@ -430,23 +432,7 @@ const MultiStepForm: React.FC = () => {
                       {/* Progress Indicator */}
                       <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
                         {/* Orange Arc */}
-                        <svg
-                          className="absolute inset-0 h-full w-full rotate-[10deg]"
-                          viewBox="0 0 36 36"
-                        >
-                          <path
-                            className="text-custom-orange-900"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeDasharray="100"
-                            strokeDashoffset="90"
-                            d="M18 2
-     a 16 16 0 0 1 0 32
-     a 16 16 0 0 1 0 -32"
-                          />
-                        </svg>
+                        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
 
                         {/* Step Text */}
                         <span className="text-custom-white-900 z-10 text-sm font-medium">1/6</span>
@@ -454,9 +440,11 @@ const MultiStepForm: React.FC = () => {
 
                       <div className="mb-4 text-center">
                         <h2 className="text-custom-white-900 text-3xl font-bold">
-                          TELL US ABOUT YOURSELF!
+                          {t("tell-us-about-yourself")}
                         </h2>
-                        <p className="text-custom-white-900 mt-2">We Need To Know Your Gender</p>
+                        <p className="text-custom-white-900 mt-2">
+                          {t("we-need-to-know-your-gender")}
+                        </p>
                       </div>
                       <div className="space-y-6">
                         <div className="space-y-2">
@@ -486,7 +474,7 @@ const MultiStepForm: React.FC = () => {
                             onClick={nextStep}
                             className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
                           >
-                            Next
+                            {t("next")}
                           </button>
                         </div>
                       </div>
@@ -502,7 +490,7 @@ const MultiStepForm: React.FC = () => {
                         onClick={nextStep}
                         className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
                       >
-                        Next
+                        {t("next")}
                       </button>
                     </div>
                   </div>
@@ -516,7 +504,7 @@ const MultiStepForm: React.FC = () => {
                         onClick={nextStep}
                         className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
                       >
-                        Next
+                        {t("next")}
                       </button>
                     </div>
                   </div>
@@ -530,7 +518,7 @@ const MultiStepForm: React.FC = () => {
                         onClick={nextStep}
                         className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
                       >
-                        Next
+                        {t("next")}
                       </button>
                     </div>
                   </div>
@@ -544,7 +532,7 @@ const MultiStepForm: React.FC = () => {
                         onClick={nextStep}
                         className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
                       >
-                        Next
+                        {t("next")}
                       </button>
                     </div>
                   </div>
@@ -560,7 +548,7 @@ const MultiStepForm: React.FC = () => {
                           isSubmitting ? "cursor-not-allowed opacity-50" : ""
                         }`}
                       >
-                        {isSubmitting ? "Submitting..." : "Complete Registration"}
+                        {isSubmitting ? t("submitting") + "..." : t("complete-registration")}
                       </button>
                     </div>
                   </div>

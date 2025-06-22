@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import "swiper/css";
+import { useTranslations } from "use-intl";
 
 const MIN_HEIGHT = 130;
 const MAX_HEIGHT = 210;
@@ -10,6 +11,7 @@ interface HeightSliderProps {
 }
 
 const HeightSlider: React.FC<HeightSliderProps> = ({ onHeightChange }) => {
+  const t = useTranslations();
   const [selectedHeight, setSelectedHeight] = useState<number>(170); // Default height
   const swiperRef = useRef<SwiperRef>(null);
   const heights = Array.from({ length: MAX_HEIGHT - MIN_HEIGHT + 1 }, (_, i) => MIN_HEIGHT + i);
@@ -27,31 +29,21 @@ const HeightSlider: React.FC<HeightSliderProps> = ({ onHeightChange }) => {
       {/* Progress Indicator */}
       <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
         {/* Orange Arc */}
-        <svg className="absolute inset-0 h-full w-full rotate-[10deg]" viewBox="0 0 36 36">
-          <path
-            className="text-custom-orange-900"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="100"
-            strokeDashoffset="40"
-            d="M18 2
-     a 16 16 0 0 1 0 32
-     a 16 16 0 0 1 0 -32"
-          />
-        </svg>
-
+        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
         {/* Step Text */}
         <span className="text-custom-white-900 z-10 text-sm font-medium">4/6</span>
       </div>
       {/* Heading and Subheading */}
       <div className="text-center">
-        <h2 className="text-custom-white-900 my-4 text-2xl font-bold">WHAT IS YOUR HEIGHT?</h2>
-        <p className="text-custom-white-900 my-4">This Helps Us Create Your Personalized Plan</p>
+        <h2 className="text-custom-white-900 my-4 text-2xl font-bold">
+          {t("what-is-your-height")}
+        </h2>
+        <p className="text-custom-white-900 my-4">
+          {t("this-helps-us-create-your-personalized-plan")}
+        </p>
       </div>
       <div className="text-custom-orange-900 mb-4 text-lg font-semibold tracking-wide">
-        Centimeters
+        {t("centimeters")}
       </div>
       <div className="relative w-full">
         <Swiper

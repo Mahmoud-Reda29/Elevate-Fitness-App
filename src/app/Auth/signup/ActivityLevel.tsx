@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaBed, FaWalking, FaBicycle, FaRunning, FaDumbbell } from "react-icons/fa";
 import type { JSX } from "react/jsx-runtime";
+import { useTranslations } from "use-intl";
 
 interface ActivityLevelProps {
   onActivityChange?: (activityLevel: string) => void; // Callback prop to send selected activity level to parent
@@ -8,7 +9,7 @@ interface ActivityLevelProps {
 
 const ActivityLevel: React.FC<ActivityLevelProps> = ({ onActivityChange }) => {
   const [selectedActivity, setSelectedActivity] = useState<string>(""); // Local state for selected activity level
-
+  const t = useTranslations();
   const handleActivitySelect = (activity: string) => {
     setSelectedActivity(activity);
     if (onActivityChange) {
@@ -50,8 +51,12 @@ const ActivityLevel: React.FC<ActivityLevelProps> = ({ onActivityChange }) => {
       </div>
       {/* Heading and Subheading */}
       <div className="text-center">
-        <h2 className="text-custom-white-900 text-2xl font-bold">What is Your Activity Level?</h2>
-        <p className="text-custom-white-900 mt-2">This Helps Us Create Your Personalized Plan</p>
+        <h2 className="text-custom-white-900 text-2xl font-bold">
+          {t("what-is-your-activity-level")}
+        </h2>
+        <p className="text-custom-white-900 mt-2">
+          {t("this-helps-us-create-your-personalized-plan-3")}
+        </p>
       </div>
       {/* Activity Options */}
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
