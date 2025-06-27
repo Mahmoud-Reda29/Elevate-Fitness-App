@@ -24,5 +24,12 @@
   "nutritionGuidance-description": "Our gym is equipped with the latest cardio & strength machines.",
   "onlinePrograms-title": "Online Programs",
   "onlinePrograms-description": "Fuel your fitness journey with customized meal plans for you.",
-  "workout": "workout"
+  "workout": "workout",
+  "fuel-your-fitness-journey-with": "Fuel your fitness journey with",
+  "customized": "customized",
+  "meal-plans": "meal plans",
+  "for-you": "for you",
+  "breakfast": "Breakfast",
+  "lunch": "Lunch",
+  "dinner": "Dinner"
 }

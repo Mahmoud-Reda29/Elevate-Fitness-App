@@ -13,10 +13,29 @@ const messages = {
   en: enMessages,
   ar: arMessages,
 };
+
+// ... existing code ...
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("./service-worker.js")
+      .then((reg) => console.log("Service Worker registered", reg))
+      .catch((err) => console.error("Registration failed:", err));
+  });
+}
+
+// Request notification permission
+Notification.requestPermission().then((permission) => {
+  if (permission === "granted") {
+    console.log("Notification permission granted");
+  }
+});
+// ... existing code ...
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AppProviders locale={locale} messages={messages[locale]}>
       <App />
     </AppProviders>
-  </StrictMode>
+  </StrictMode>,
 );
