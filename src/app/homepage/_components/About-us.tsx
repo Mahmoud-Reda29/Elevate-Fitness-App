@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { MdArrowOutward } from "react-icons/md";
 import { useTranslations } from "use-intl";
-import { CiDumbbell } from "react-icons/ci";
+// import { CiDumbbell } from "react-icons/ci";
+import HeaderTitle from "@/components/common/Header-title";
 
 const goals = [
   {
@@ -48,13 +49,15 @@ export default function AboutUs() {
 
           {/* Right side - Content */}
           <div className="order-1 w-full space-y-6 md:w-1/2 lg:order-2">
-            <h2 className="text-gradient dark:text-gradient-dark dark:text-custom-black-800 relative text-6xl font-bold text-white uppercase">
+            <HeaderTitle title="workout" subTitle="about-us" alignment="start" />
+
+            {/* <h2 className="text-gradient dark:text-gradient-dark  dark:text-custom-black-800 relative text-6xl font-bold text-white uppercase">
               {t("workout")}
-              <span className="text-custom-orange-900 absolute flex items-center text-sm">
+              <span className="text-custom-orange-900 absolute bottom-3 flex items-center text-sm">
                 <CiDumbbell />
                 {t("about-us")}
               </span>
-            </h2>
+            </h2> */}
             <h2 className="text-4xl leading-tight font-bold tracking-tight md:text-5xl">
               {t("empowering-you-to-achieve")}
               <br />

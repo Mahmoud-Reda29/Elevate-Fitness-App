@@ -1,4 +1,3 @@
-import React from "react";
 import { MdArrowOutward } from "react-icons/md";
 
 interface FoodCardProps {
