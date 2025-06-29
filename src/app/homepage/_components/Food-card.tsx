@@ -1,4 +1,5 @@
 import { MdArrowOutward } from "react-icons/md";
+import { useTranslations } from "use-intl";
 
 interface FoodCardProps {
   image: string;
@@ -6,6 +7,8 @@ interface FoodCardProps {
 }
 
 const FoodCard = ({ image, title }: FoodCardProps) => {
+  const t = useTranslations();
+
   return (
     <div className="mx-auto w-full max-w-sm overflow-hidden rounded-lg shadow-lg backdrop-blur-2xl transition-shadow duration-300 hover:shadow-xl">
       {/* Image Container */}
@@ -20,7 +23,7 @@ const FoodCard = ({ image, title }: FoodCardProps) => {
       {/* Content Container */}
       <div className="p-4">
         <h3 className="mb-3 text-lg font-bold tracking-wide text-gray-800 uppercase sm:text-xl">
-          {title}
+          {t(title)}
         </h3>
 
         {/* Read More Link */}

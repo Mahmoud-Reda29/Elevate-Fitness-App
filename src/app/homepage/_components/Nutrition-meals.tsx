@@ -7,17 +7,17 @@ export default function NutritionMeals() {
     {
       id: 1,
       image: "meal-1.jpg",
-      title: t("breakfast"),
+      title: "breakfast",
     },
     {
       id: 2,
       image: "meal-2.jpg",
-      title: t("lunch"),
+      title: "lunch",
     },
     {
       id: 3,
       image: "meal-3.jpg",
-      title: t("dinner"),
+      title: "dinner",
     },
   ];
   return (
