@@ -28,7 +28,7 @@ const FoodCard = ({ image, title }: FoodCardProps) => {
 
         {/* Read More Link */}
         <div className="text-custom-orange-900 flex cursor-pointer items-center gap-2">
-          <span className="text-sm font-medium sm:text-base">Read More</span>
+          <span className="text-sm font-medium sm:text-base">{t("read-more")}</span>
           <span className="bg-custom-orange-900 rounded-full border-2">
             <MdArrowOutward className="text-white" size={20} />
           </span>
