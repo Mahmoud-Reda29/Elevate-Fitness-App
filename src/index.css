@@ -5,6 +5,18 @@
 }
 
 @layer utilities {
+  @keyframes scroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-150%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
   .text-gradient {
     background-image: linear-gradient(to top, #fff, #fff, #000, #000, #000);
     -webkit-background-clip: text;

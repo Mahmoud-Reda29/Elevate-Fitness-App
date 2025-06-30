@@ -28,7 +28,7 @@ export default function HeaderTitle({ title, subTitle, alignment }: HeaderProps)
         {t(title)}
       </h2>
       <div
-        className={`absolute bottom-1 mt-2 flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 ${alignmentClass[alignment].split(" ")[0]}`}
+        className={`absolute -bottom-1.5 flex items-center gap-2 text-sm font-medium text-orange-600 dark:text-orange-400 ${alignmentClass[alignment].split(" ")[0]}`}
       >
         <CiDumbbell className="text-lg" />
         <span>{t(subTitle)}</span>
