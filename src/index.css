@@ -1,16 +1,51 @@
 @import "tailwindcss";
 
+* {
+  font-family: "Baloo Thambi 2", sans-serif;
+}
+
+@layer utilities {
+  .text-gradient {
+    background-image: linear-gradient(to top, #fff, #fff, #000, #000, #000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }
+
+  .text-gradient-dark {
+    background-image: linear-gradient(to top, #fff, #fff, #242424f2, #242424f2, #242424f2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+  }
+}
+
 /**
   * to create custom color it's should be start with (--color) then add color name and his degree
 */
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-*: initial;
   /* main color orange */
   --color-custom-orange-900: #ff4100;
-  --color-custom-black-900: #000000;
-  --color-custom-black-800: #242424;
-  --color-custom-white-900: #FFFFFF;
-  --color-custom-gray-500: #D3D3D3;
-  --color-custom-gray-600: #D9D9D9;
+
+  --color-custom-white: #ffffff99;
+  --color-custom-white-800: #f3f3f4;
+  --color-custom-white-700: #fffffff2;
+
+  --color-custom-gray-500: #F3F3F4;
+
+  --color-custom-black-900: #242424;
+  --color-custom-black-800: #242424f2;
+  --color-custom-black-700: #24242499;
+  --color-custom-black-500: #232424;
 }
