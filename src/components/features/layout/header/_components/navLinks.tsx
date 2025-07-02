@@ -12,7 +12,7 @@ export default function NavLinks() {
   return (
     <div className="lg:flex gap-6 hidden">
         {navLinks.map(({title, path})=>
-            <NavLink className={"font-bold text-custom-black-800"} to={path}>{title}</NavLink>
+            <NavLink className={"font-bold text-custom-black-800 dark:text-white"} to={path}>{title}</NavLink>
         )}
       
     </div>

@@ -9,12 +9,15 @@ export default function Header() {
       {/* Logo */}
       <HeaderLogo />
 
-      {/* Links */}
+{/* Links */}
       <NavLinks />
-      <NavLinksRes/>
-
+<div className="flex gap-5 items-center">
       {/* Buttons */}
       <ButtonsHeader/>
+
+      <NavLinksRes/>
+
+</div>
     </div>
   );
 }

@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import { Toaster } from "sonner";
 import LoginForm from "./components/features/auth/login/login-form";
-import LayoutHomePage from "./app/homepage/layout";
+import Homepage from "./app/homepage/Homepage";
 
 // Messages map
 const messages = {
@@ -46,7 +46,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <LayoutHomePage />,
+        element: <Homepage />,
         errorElement: <Error />,
       },
       {
@@ -65,7 +65,6 @@ const router = createBrowserRouter([
 
 export default function App() {
   return<>
-
   <RouterProvider router={router} />
     <Toaster/>
   </> 
