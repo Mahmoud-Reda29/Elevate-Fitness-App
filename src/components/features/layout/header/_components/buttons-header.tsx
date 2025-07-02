@@ -1,5 +1,4 @@
 import HandleMode from "@/components/handle-mode";
-import ThemeSwitch from "@/components/handle-mode";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
