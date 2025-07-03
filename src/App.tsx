@@ -7,25 +7,45 @@ import About from "./app/about/About";
 import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
-import { IntlProvider } from "use-intl";
-import AuthLayout from "./app/auth/layout";
-import LoginPage from "./app/auth/login/page";
-import SignupPage from "./app/auth/signup/page";
-import ForgetPassword from "./app/auth/forget-password/page";
+import { IntlProvider, type Formats, type Locale } from "use-intl";
 
 // Messages map
 const messages = {
   en: enMessages,
   ar: arMessages,
 };
-
+const getFormats = (locale: Locale): Formats => {
+  return {
+    number: {
+      digit: {
+        numberingSystem: locale === "ar" ? "arab" : "latn",
+      },
+      currency: {
+        numberingSystem: locale === "ar" ? "arab" : "latn",
+        style: "currency",
+        currency: "EGP",
+      },
+      "currency-no-fraction": {
+        numberingSystem: locale === "ar" ? "arab" : "latn",
+        style: "currency",
+        currency: "EGP",
+        maximumFractionDigits: 0,
+      },
+      percentage: {
+        numberingSystem: locale === "ar" ? "arab" : "latn",
+        style: "percent",
+        minimumFractionDigits: 0,
+      },
+    },
+  };
+};
 // This wrapper reads the route param and wraps children with IntlProvider
 function LocaleWrapper({ children }: { children: React.ReactNode }) {
   const { lang } = useParams();
   const locale = lang && (lang === "en" || lang === "ar") ? lang : "en";
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <IntlProvider locale={locale} messages={messages[locale]} formats={getFormats(locale)}>
       {children}
     </IntlProvider>
   );
@@ -55,14 +75,6 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />,
         errorElement: <Error />,
-      },
-      {
-        element: <AuthLayout />,
-        children: [
-          { path: "login", element: <LoginPage /> },
-          { path: "signup", element: <SignupPage /> },
-          { path: "forget-password", element: <ForgetPassword /> },
-        ],
       },
     ],
   },
