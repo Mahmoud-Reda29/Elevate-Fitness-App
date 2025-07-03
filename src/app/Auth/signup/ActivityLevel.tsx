@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaBed, FaWalking, FaBicycle, FaRunning, FaDumbbell } from "react-icons/fa";
 import type { JSX } from "react/jsx-runtime";
 import { useTranslations } from "use-intl";
+import CircleProgress from "./CircleProgress";
 
 interface ActivityLevelProps {
   onActivityChange?: (activityLevel: string) => void; // Callback prop to send selected activity level to parent
@@ -29,26 +30,8 @@ const ActivityLevel: React.FC<ActivityLevelProps> = ({ onActivityChange }) => {
   return (
     <>
       {/* Progress Indicator */}
-      <div className="relative mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
-        {/* Orange Arc */}
-        <svg className="absolute inset-0 h-full w-full rotate-[10deg]" viewBox="0 0 36 36">
-          <path
-            className="text-custom-orange-900"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="100"
-            strokeDashoffset="0"
-            d="M18 2
-     a 16 16 0 0 1 0 32
-     a 16 16 0 0 1 0 -32"
-          />
-        </svg>
+      <CircleProgress text="6/6" />
 
-        {/* Step Text */}
-        <span className="text-custom-white-900 z-10 text-sm font-medium">6/6</span>
-      </div>
       {/* Heading and Subheading */}
       <div className="text-center">
         <h2 className="text-custom-white-900 text-2xl font-bold">

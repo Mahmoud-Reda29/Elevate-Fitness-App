@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import "swiper/css";
 import { useTranslations } from "use-intl";
+import CircleProgress from "./CircleProgress";
 
 const MIN_WEIGHT = 40;
 const MAX_WEIGHT = 150;
@@ -27,13 +28,8 @@ const WeightSlider: React.FC<WeightSliderProps> = ({ onWeightChange }) => {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col items-center rounded-xl bg-gray-900 p-6">
       {/* Progress Indicator */}
-      <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
-        {/* Orange Arc */}
-        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
+      <CircleProgress text="3/6" />
 
-        {/* Step Text */}
-        <span className="text-custom-white-900 z-10 text-sm font-medium">3/6</span>
-      </div>
       {/* Heading and Subheading */}
       <div className="text-center">
         <h2 className="text-custom-white-900 my-4 text-2xl font-bold">

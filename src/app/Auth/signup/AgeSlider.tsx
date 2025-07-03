@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import "swiper/css";
 import { useTranslations } from "use-intl";
+import CircleProgress from "./CircleProgress";
 
 const MIN_AGE = 18;
 const MAX_AGE = 60;
@@ -27,12 +28,8 @@ const AgeSlider: React.FC<AgeSliderProps> = ({ onAgeChange }) => {
   return (
     <div className="mx-auto flex w-full max-w-md flex-col items-center rounded-xl bg-gray-900 p-6">
       {/* Progress Indicator */}
-      <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
-        {/* Orange Arc */}
-        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
-        {/* Step Text */}
-        <span className="text-custom-white-900 z-10 text-sm font-medium">2/6</span>
-      </div>
+      <CircleProgress text="2/6" />
+
       {/* Heading and Subheading */}
       <div className="text-center">
         <h2 className="text-custom-white-900 my-4 text-2xl font-bold">{t("how-old-are-you")}</h2>

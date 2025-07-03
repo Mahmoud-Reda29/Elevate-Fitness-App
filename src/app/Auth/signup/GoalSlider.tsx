@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaWeightHanging, FaRunning, FaDumbbell, FaChild, FaBook } from "react-icons/fa";
 import type { JSX } from "react/jsx-runtime";
 import { useTranslations } from "use-intl";
+import CircleProgress from "./CircleProgress";
 
 interface GoalSliderProps {
   onGoalChange?: (goal: string) => void; // Callback to parent
@@ -35,21 +36,7 @@ const GoalSlider: React.FC<GoalSliderProps> = ({ onGoalChange }) => {
   return (
     <>
       {/* Progress Circle */}
-      <div className="relative mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
-        <svg className="absolute inset-0 h-full w-full rotate-[10deg]" viewBox="0 0 36 36">
-          <path
-            className="text-custom-orange-900"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray="100"
-            strokeDashoffset="20"
-            d="M18 2 a 16 16 0 0 1 0 32 a 16 16 0 0 1 0 -32"
-          />
-        </svg>
-        <span className="text-custom-white-900 z-10 text-sm font-medium">5/6</span>
-      </div>
+      <CircleProgress text="5/6" />
 
       {/* Title */}
       <div className="text-center">
