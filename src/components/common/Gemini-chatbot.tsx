@@ -12,10 +12,13 @@ const formSchema = z.object({
 });
 
 export default function GeminiChatbot() {
+  // Variables
   const [messages, setMessages] = useState<{ role: "user" | "gemini"; text: string }[]>([
     { role: "gemini", text: "Hello! How can I assist you today?" },
   ]);
   const [showChatbot, setShowChatbot] = useState(false);
+
+  //  Form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -27,7 +30,10 @@ export default function GeminiChatbot() {
     const userMessage = values.message;
     setMessages((prev) => [...prev, { role: "user", text: userMessage }]);
 
+    // handle waiting response
     setMessages((prev) => [...prev, { role: "gemini", text: "..." }]);
+
+    //  Reset form
     form.reset();
 
     try {

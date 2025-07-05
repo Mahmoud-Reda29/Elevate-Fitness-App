@@ -1,5 +1,10 @@
 {
   "hello": "Hello",
   "welcome": "Welcome to Elevate Fitness App",
-  "homepage": "homepage"
+  "homepage": "homepage",
+  "smart-coach": "Smart coach",
+  "previous-conversations": "Previous conversations",
+  "lorem-ipsum-dolor-sit-amet": "Lorem ipsum dolor sit amet.",
+  "send": "Send",
+  "ask-me-anything": "Ask Me Anything"
 }

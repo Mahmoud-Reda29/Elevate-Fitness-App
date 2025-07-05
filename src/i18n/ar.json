@@ -1,1 +1,8 @@
-{ "homepage": "صفحه الهووم" }
+{
+  "homepage": "صفحه الهووم",
+  "smart-coach": "مدرب ذكي",
+  "previous-conversations": "المحادثات السابقة",
+  "lorem-ipsum-dolor-sit-amet": "تجربه النص المستخدم",
+  "send": "يرسل",
+  "ask-me-anything": "اسألني أي شيء"
+}

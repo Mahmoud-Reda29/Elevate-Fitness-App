@@ -4,6 +4,8 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "@/component
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { IoIosArrowForward } from "react-icons/io";
+import { useTranslations } from "use-intl";
+import { LuPenLine } from "react-icons/lu";
 
 interface ChatbotMessageProps {
   messages: { role: string; text: string }[];
@@ -14,10 +16,13 @@ interface ChatbotMessageProps {
 export default function ChatbotMessage({ messages, onSubmit, form }: ChatbotMessageProps) {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Translation
+  const t = useTranslations();
+
   return (
-    <div className="border-custom-orange-900 scrollbar relative max-h-[600px] w-full overflow-hidden overflow-y-scroll rounded-2xl border-2 bg-[url('/images/Rectangle.png')] bg-cover bg-center p-4 text-white shadow-lg">
+    <div className="border-custom-orange-900 scrollbar hidden-scrollbar relative max-h-[600px] w-full overflow-hidden overflow-y-scroll rounded-2xl border-2 bg-[url('/images/Rectangle.png')] bg-cover bg-center p-4 text-white shadow-lg">
       <div className="mb-10 flex items-center justify-between">
-        <h3>Smart coach</h3>
+        <h3 className="text-2xl font-bold">{t("smart-coach")}</h3>
         <button onClick={() => setMenuOpen(true)}>
           <CgMenuLeftAlt className="text-custom-orange-900" />
         </button>
@@ -38,11 +43,11 @@ export default function ChatbotMessage({ messages, onSubmit, form }: ChatbotMess
       >
         <div className="p-6">
           {/* Menu content here */}
-          <h4 className="mb-4 font-bold">Previous conversations</h4>
+          <h4 className="mb-4 font-bold">{t("previous-conversations")}</h4>
           <ul>
             {Array.from({ length: 6 }).map((_, i) => (
               <li key={i} className="mb-2 flex items-center">
-                Lorem ipsum dolor sit amet.
+                {t("lorem-ipsum-dolor-sit-amet")}
                 <IoIosArrowForward className="text-custom-orange-900" />
               </li>
             ))}
@@ -82,15 +87,22 @@ export default function ChatbotMessage({ messages, onSubmit, form }: ChatbotMess
             name="message"
             render={({ field }) => (
               <FormItem className="flex-grow">
-                <FormControl>
-                  <Input placeholder="Ask Me Anything" {...field} />
+                <FormControl className="">
+                  <div className="relative">
+                    <Input
+                      placeholder={t("ask-me-anything")}
+                      className="placeholder:text-custom-gray-100 pl-8"
+                      {...field}
+                    />
+                    <LuPenLine className="text-custom-orange-900 absolute top-1/2 left-2 -translate-y-1/2" />
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
           <Button type="submit" className="bg-custom-orange-900 rounded-xl">
-            Send
+            {t("send")}
           </Button>
         </form>
       </Form>

@@ -44,9 +44,15 @@
     backdrop-filter: blur(20px);
     box-shadow: 0px 0px 10px 0px #00000040;
   }
+
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @theme {
   /* main color orange */
   --color-custom-orange-900: #ff4100;
+
+  --color-custom-gray-100: #d3d3d3;
 }
