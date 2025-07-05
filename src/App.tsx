@@ -1,4 +1,3 @@
-import "./App.css";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Error from "./Error";
 import AppLayout from "./AppLayout";
@@ -8,6 +7,7 @@ import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
+import "./App.css";
 
 // Messages map
 const messages = {
