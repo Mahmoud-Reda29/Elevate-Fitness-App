@@ -1,5 +1,32 @@
 {
   "hello": "Hello",
   "welcome": "Welcome to Elevate Fitness App",
-  "homepage": "homepage"
+  "homepage": "homepage",
+  "workouts": "WORKOUTS",
+  "fitness-class": "Fitness Class",
+  "transform-your-body-with-our": "TRANSFORM YOUR BODY WITH OUR",
+  "dynamic": "DYNAMIC",
+  "upcoming-workouts": "UPCOMING WORKOUTS",
+  "loading-muscles": "Loading muscles",
+  "error-loading-muscles": "Error loading muscles",
+  "explore": "Explore",
+  "why-us": "Why Us",
+  "elevate-fitness-with-the": "ELEVATE FITNESS WITH THE",
+  "best-way": "BEST WAY",
+  "possible": "POSSIBLE",
+  "we-offer-a-fitness-journey-thats-tailored-to-your-goals-supported-by-professional-trainers-and-a-welcoming-community-whether-its-weight-loss-strength-building-or-overall-wellness-our-proven-methods": "We offer a fitness journey that's tailored to your goals, supported by professional trainers and a welcoming community. Whether it's weight loss, strength building, or overall wellness, our proven methods.",
+  "features": [
+    {
+      "title": "Personalized Fitness Plans",
+      "description": "We tailor every workout to fit your unique goals and fitness level ensuring that you make the most progress."
+    },
+    {
+      "title": "Results-Driven Focus",
+      "description": "Everything we do is designed to help you achieve measurable results, whether you're aiming for weight loss."
+    },
+    {
+      "title": "State-Of-The-Art Equipment",
+      "description": "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type."
+    }
+  ]
 }
