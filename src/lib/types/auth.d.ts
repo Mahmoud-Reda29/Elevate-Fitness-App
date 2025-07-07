@@ -16,3 +16,6 @@ declare type SignInResponse = {
   token: string;
   user: User;
 };
+declare type ForgetPasswordFields = {
+  email: string;
+};

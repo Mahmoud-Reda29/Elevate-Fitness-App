@@ -10,6 +10,9 @@ import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import { Toaster } from "sonner";
 import LoginForm from "./components/features/auth/login/login-form";
+import AuthLayout from "./app/auth/layout";
+import SignupPage from "./app/auth/signup/page";
+import ForgetPassword from "./app/auth/forget-password/page";
 
 // Messages map
 const messages = {
@@ -56,8 +59,13 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <LoginForm />,
         errorElement: <Error />,
+        element: <AuthLayout />,
+        children: [
+          { path: "login", element: <LoginForm /> },
+          { path: "signup", element: <SignupPage /> },
+          { path: "forget-password", element: <ForgetPassword /> },
+        ],
       },
     ],
   },
@@ -67,5 +75,5 @@ export default function App() {
   return<>
   <RouterProvider router={router} />
     <Toaster/>
-  </> 
+  </>
 }
