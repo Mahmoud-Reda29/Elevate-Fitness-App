@@ -1,6 +1,21 @@
-import { Outlet } from "react-router";
+import { useAuth } from "@/hooks/auth/use-authenticated";
+import { Outlet, useNavigate } from "react-router";
+import { useEffect } from "react";
 
 export default function AuthLayout() {
+  // Authentication
+  const { isAuthenticated } = useAuth();
+
+  // Navigation
+  const navigate = useNavigate();
+
+  // Guard to redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
+
   return (
     <div className="relative min-h-screen w-full">
       {/* Background Image */}
@@ -10,8 +25,10 @@ export default function AuthLayout() {
           backgroundImage: `url('/assests/images/background.png')`,
         }}
       ></div>
+
       {/* Overlay Layer */}
       <div className="bg-custom-overlay absolute inset-0 z-1 backdrop-blur-[86px]"></div>
+
       {/* Content */}
       <div className="relative z-55 flex h-screen lg:flex-row lg:items-center lg:justify-center">
         {/* Left Side */}
@@ -26,7 +43,7 @@ export default function AuthLayout() {
               />
             </div>
 
-            {/*   Person image */}
+            {/* Person image */}
             <div>
               <img
                 src="/assests/images/person.png"

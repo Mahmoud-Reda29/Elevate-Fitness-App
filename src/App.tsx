@@ -8,10 +8,11 @@ import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
+import { Toaster } from "sonner";
 import AuthLayout from "./app/auth/layout";
-import LoginPage from "./app/auth/login/page";
 import SignupPage from "./app/auth/signup/page";
 import ForgetPassword from "./app/auth/forget-password/page";
+import LoginPage from "./app/auth/login/page";
 
 // Messages map
 const messages = {
@@ -69,5 +70,10 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
+  );
 }

@@ -10,11 +10,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useLocale, useTranslations } from "use-intl";
+import { useTranslations } from "use-intl";
 import { Button } from "@/components/ui/button";
 import useForgetPasssword from "@/hooks/auth/use-forget-passsword";
-import { Mail } from "lucide-react";
-import { cn } from "@/lib/cn";
 
 export default function ForgetPassword() {
   // Translation
@@ -42,7 +40,6 @@ export default function ForgetPassword() {
     // Muatation fun
     forget(values);
   };
-  const locale = useLocale();
 
   return (
     <div>
@@ -65,12 +62,6 @@ export default function ForgetPassword() {
                   <FormControl>
                     {/* Email input */}
                     <div className="relative">
-                      <Mail
-                        className={cn(
-                          "absolute top-1/2 h-5 w-5 -translate-y-1/2 transform ltr:text-white rtl:text-amber-600",
-                          locale === "ar" ? "end-3 top-9" : "left-3",
-                        )}
-                      />
                       <Input
                         type="email"
                         {...field}
