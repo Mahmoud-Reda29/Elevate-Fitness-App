@@ -3,6 +3,7 @@
   "email-required": "البريد الإلكتروني مطلوب",
   "submit-btn": "يُقدِّم",
   "email": "بريد إلكتروني",
-  "forget-password-title": "ننسى كلمة المرور",
-  "sent-otp-btn": "أرسلت OTP"
+  "forget-password-title": "اعادة تعيين كلمة المرور",
+  "sent-otp-btn": "ارسال الكود"
+  
 }

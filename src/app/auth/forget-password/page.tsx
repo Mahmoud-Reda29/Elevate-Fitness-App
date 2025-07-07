@@ -10,10 +10,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useTranslations } from "use-intl";
+import { useLocale, useTranslations } from "use-intl";
 import { Button } from "@/components/ui/button";
 import useForgetPasssword from "@/hooks/auth/use-forget-passsword";
 import { Mail } from "lucide-react";
+import { cn } from "@/lib/cn";
 
 export default function ForgetPassword() {
   // Translation
@@ -41,16 +42,17 @@ export default function ForgetPassword() {
     // Muatation fun
     forget(values);
   };
+  const locale = useLocale();
 
   return (
     <div>
       <h2 className="text-center text-5xl font-extrabold text-white capitalize">
         {t("forget-password-title")}
       </h2>
-      <div className="border-custom-gray-400 border-cust mt-5 rounded-4xl p-10 md:min-w-md">
+      <div className="border-custom-gray-400 mt-5 items-center justify-center gap-2 rounded-[50px] border p-10">
         {/* Forget form */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-2">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-6">
             <FormField
               control={form.control}
               name="email"
@@ -58,13 +60,19 @@ export default function ForgetPassword() {
                 <FormItem>
                   {/* Label */}
                   <FormLabel className="mx-auto text-2xl font-normal text-white capitalize">
-                    {t("email-label")}
+                    {t("email")}
                   </FormLabel>
                   <FormControl>
                     {/* Email input */}
                     <div className="relative">
-                      <Mail className="absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2 transform text-white" />
+                      <Mail
+                        className={cn(
+                          "absolute top-1/2 h-5 w-5 -translate-y-1/2 transform ltr:text-white rtl:text-amber-600",
+                          locale === "ar" ? "end-3 top-9" : "left-3",
+                        )}
+                      />
                       <Input
+                        type="email"
                         {...field}
                         placeholder={t("email")}
                         className="w-full rounded-3xl border-white pl-10 text-white"
