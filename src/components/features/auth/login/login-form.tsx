@@ -3,13 +3,13 @@ import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import useLogin from "@/hooks/auth/use-login";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslations } from "use-intl";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import LoginHeading from "./login-heading";
-import { Eye, Lock, Mail } from "lucide-react";
-import SocialAuth from "@/components/common/social-auth";
+import SocialAuth from "@/components/features/auth/login/social-auth";
+import { LocalizedLink } from "@/components/common/localized-link";
 
 export default function LoginForm() {
   // Navigation
@@ -56,23 +56,22 @@ export default function LoginForm() {
           className="border-custom-gray-500 w-[486px] rounded-4xl border p-10"
         >
           {/* Heading */}
-          <h3 className="text-custom-white-900 mb-4 text-center text-xl font-extrabold">{t("login")}</h3>
+          <h3 className="text-custom-white-900 mb-4 text-center text-xl font-extrabold">
+            {t("login")}
+          </h3>
 
           {/* Email */}
           <FormField
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem className="relative mb-4 flex items-center">
-                {/* Mail icon */}
-                <Mail className="text-custom-gray-500 absolute pl-3" />
+              <FormItem className="relative mb-4">
                 <FormControl>
-                  {/* Input */}
                   <Input
                     {...field}
                     type="email"
                     placeholder={t("email")}
-                    className="border-custom-gray-600 placeholder:text-custom-gray-500 h-12 rounded-2xl border pl-8"
+                    className="border-custom-gray-600 placeholder:text-custom-gray-500 h-12 rounded-2xl border ps-10 pe-4"
                   />
                 </FormControl>
               </FormItem>
@@ -84,33 +83,28 @@ export default function LoginForm() {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="relative mb-2 flex items-center">
-                {/* Lock icon */}
-                <Lock className="text-custom-gray-500 absolute left-0 pl-3" />
+              <FormItem className="relative mb-2">
                 <FormControl>
-                  {/* Input */}
                   <Input
                     {...field}
                     type="password"
                     placeholder={t("password")}
-                    className="border-custom-gray-600 placeholder:text-custom-gray-500 h-12 rounded-2xl border pl-8"
+                    className="border-custom-gray-600 placeholder:text-custom-gray-500 h-12 rounded-2xl border ps-10 pe-10"
                   />
                 </FormControl>
-                {/* Eye icon */}
-                <Eye className="text-custom-gray-500 absolute right-0 pr-3" />
               </FormItem>
             )}
           />
 
           {/* Forget password */}
           <div className="text-custom-orange-900 cursor-pointer text-end underline">
-            <Link to={"/forgetPassword"} className="font-bold">
+            <LocalizedLink to={"/forget-password"} className="font-bold">
               {t("forget-password")}
-            </Link>
+            </LocalizedLink>
           </div>
 
           {/* Or */}
-          <div className="text-custom-gray-500 flex items-center w-[80%] m-auto gap-4 my-6">
+          <div className="text-custom-gray-500 m-auto my-6 flex w-[80%] items-center gap-4">
             <hr className="flex-1 border-t" />
             <span className="text-sm">{t("or")}</span>
             <hr className="flex-1 border-t" />
@@ -130,10 +124,10 @@ export default function LoginForm() {
 
           {/* Register */}
           <div className="cursor-pointer text-center text-base font-bold">
-            <Link to={"/register"} className="text-custom-gray-500">
+            <LocalizedLink to={"/register"} className={"text-custom-gray-500"}>
               {t("no-account")}
               <span className="text-custom-orange-900 ms-1 underline">{t("register")}</span>
-            </Link>
+            </LocalizedLink>
           </div>
         </form>
       </Form>

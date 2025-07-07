@@ -1,15 +1,15 @@
-import { useTranslations } from "use-intl"
+import { useTranslations } from "use-intl";
 
 export default function LoginHeading() {
   // Translation
-  const t =useTranslations()
+  const t = useTranslations();
 
   return (
-    <div className="flex flex-col gap-7 mb-14">
+    <div className="mb-14 flex flex-col gap-7 text-center">
       {/* Heading */}
       <p className="text-custom-black-900 text-sm">{t("hey-there")}</p>
 
-      <h2 className="text-custom-black-900 font-extrabold text-5xl">{t("welcome-back")}</h2>
+      <h2 className="text-custom-black-900 text-5xl font-extrabold">{t("welcome-back")}</h2>
     </div>
-  )
+  );
 }

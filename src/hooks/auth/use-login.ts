@@ -5,7 +5,7 @@ import { useTranslations } from "use-intl";
 
 export default function useLogin() {
   // Translation
-  const t = useTranslations()
+  const t = useTranslations();
 
   const { mutate, error, isPending } = useMutation({
     mutationFn: async (value: LoginFields) => {
@@ -14,12 +14,12 @@ export default function useLogin() {
       return payload;
     },
     onError: () => {
-      toast.error(t("failed-login"))
+      toast.error(t("failed-login"));
     },
     onSuccess: () => {
-      toast.success(t("success-login"))
+      toast.success(t("success-login"));
     },
   });
 
-  return {mutate, error, isPending}
+  return { mutate, error, isPending };
 }

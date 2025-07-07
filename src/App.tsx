@@ -9,10 +9,10 @@ import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import { Toaster } from "sonner";
-import LoginForm from "./components/features/auth/login/login-form";
 import AuthLayout from "./app/auth/layout";
 import SignupPage from "./app/auth/signup/page";
 import ForgetPassword from "./app/auth/forget-password/page";
+import LoginPage from "./app/auth/login/page";
 
 // Messages map
 const messages = {
@@ -58,11 +58,9 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "login",
-        errorElement: <Error />,
         element: <AuthLayout />,
         children: [
-          { path: "login", element: <LoginForm /> },
+          { path: "login", element: <LoginPage /> },
           { path: "signup", element: <SignupPage /> },
           { path: "forget-password", element: <ForgetPassword /> },
         ],
@@ -72,8 +70,10 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return<>
-  <RouterProvider router={router} />
-    <Toaster/>
-  </>
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Toaster />
+    </>
+  );
 }

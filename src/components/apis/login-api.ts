@@ -7,7 +7,7 @@ export async function LoginAuth(value: LoginFields) {
     value,
   );
 
-  const payload: ApiResponse<SignInResponse> =response.data
+  const payload: APIResponse<SignInResponse> = response.data;
 
   if ("error" in payload) {
     throw new Error("Failed Login");
