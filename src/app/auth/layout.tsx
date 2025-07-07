@@ -11,7 +11,7 @@ export default function AuthLayout() {
         }}
       ></div>
       {/* Overlay Layer */}
-      <div className="bg-custom-overlay absolute inset-0 z-1 backdrop-blur-2xl"></div>
+      <div className="bg-custom-overlay absolute inset-0 z-1 backdrop-blur-[86px]"></div>
       {/* Content */}
       <div className="relative z-55 flex h-screen lg:flex-row lg:items-center lg:justify-center">
         {/* Left Side */}
