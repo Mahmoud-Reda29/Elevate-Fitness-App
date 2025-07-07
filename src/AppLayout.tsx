@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
+import { useLocale } from "use-intl";
 
 export default function AppLayout() {
+  const local = useLocale();
+
   return (
-    <div>
+    <main dir={local === "ar" ? "rtl" : "ltr"}>
       {/* Outlet children */}
       <Outlet />
-    </div>
+    </main>
   );
 }
