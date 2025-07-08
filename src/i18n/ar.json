@@ -35,5 +35,21 @@
   "gain-more-flexibility": "اكتساب المزيد من المرونة",
   "learn-the-basics": "تعلم الأساسيات",
   "complete-registration": "التسجيل الكامل",
-  "submitting": "تقديم"
+  "submitting": "تقديم",
+  "password": "كلمه السر",
+  "login": "تسجيل الدخول",
+  "register": "سجل الان",
+  "no-account": "ليس لديك حساب بعد؟",
+  "or": "او",
+  "forget-password": "نسيت كلمة المرور؟",
+  "failed-login": "فشل تسجيل الدخول",
+  "success-login": "تم تسجيل الدخول بنجاح",
+  "hey-there": "أهلا,",
+  "welcome-back": "بعودتك!",
+  "homepage": "الصفحة الرئيسية",
+  "email-required": "البريد الإلكتروني مطلوب",
+  "submit-btn": "يُقدِّم",
+  "email": "بريد إلكتروني",
+  "forget-password-title": "اعادة تعيين كلمة المرور",
+  "sent-otp-btn": "ارسال الكود"
 }

@@ -37,5 +37,22 @@
   "gain-more-flexibility": "Gain More Flexibility",
   "learn-the-basics": "Learn The Basics",
   "complete-registration": "Complete Registration",
-  "submitting": "Submitting"
+  "submitting": "Submitting",
+  "email": "Email",
+  "password": "Password",
+  "login": "Login",
+  "register": "Register",
+  "no-account": "Dont have an account yet ?",
+  "or": "Or",
+  "forget-password": "Forget Password?",
+  "failed-login": "Failed Login",
+  "success-login": "login successful",
+  "hey-there": "Hey There,",
+  "welcome-back": "WELCOME BACK!",
+  "email-required": "Email is required",
+  "submit-btn": "Submit",
+  "forget-success-noti": "OTP sent to your email",
+  "forget-password-title": "Forget password",
+  "email-label": "Enter Your Email",
+  "sent-otp-btn": "Sent OTP"
 }
