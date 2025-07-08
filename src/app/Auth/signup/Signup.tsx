@@ -1,10 +1,5 @@
-import React from "react";
 import MultiStepForm from "./multiStepform";
 
 export default function Signup() {
-  return (
-    <>
-      <MultiStepForm />
-    </>
-  );
+  return <MultiStepForm />;
 }

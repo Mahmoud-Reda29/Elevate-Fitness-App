@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
-import "swiper/css";
+import "swiper/css/swiper.css";
 import { useTranslations } from "use-intl";
 import CircleProgress from "./CircleProgress";
 

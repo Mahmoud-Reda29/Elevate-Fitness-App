@@ -28,7 +28,7 @@
     "react-router-dom": "^7.6.1",
     "react-swipeable": "^7.0.2",
     "react-toastify": "^11.0.5",
-    "swiper": "^11.2.8",
+    "swiper": "^11.2.10",
     "tailwind-merge": "^3.3.0",
     "use-intl": "^4.1.0",
     "zod": "^3.25.32"
