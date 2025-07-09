@@ -28,5 +28,20 @@
       "title": "State-Of-The-Art Equipment",
       "description": "We provide the latest in gym equipment, from cardio machines to free weights, designed to support every type."
     }
-  ]
+  ],
+  "tap-to-change": "TAP TO CHANGE",
+  "change-password": "Change Password",
+  "select-language": "Select Language",
+  "english": "English",
+  "mood": "Mood",
+  "security": "Security",
+  "privacy-policy": "Privacy Policy",
+  "help": "Help",
+  "logout": "Logout",
+  "your-goal": "Your Goal",
+  "lose-weight": "Lose weight",
+  "your-level": "Your Level",
+  "beginner": "Beginner",
+  "weight": "Weight",
+  "90-kg": "90 KG"
 }
