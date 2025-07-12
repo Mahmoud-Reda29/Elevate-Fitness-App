@@ -4,8 +4,13 @@
   * to create custom color it's should be start with (--color) then add color name and his degree
 */
 
+@layer utilities {
+  .meal-layer {
+    background: linear-gradient(180.07deg, rgba(0, 0, 0, 0) 25.67%, #242424 93.35%);
+  }
+}
+
 @theme {
-  --color-*: initial;
   /* main color orange */
   --color-custom-orange-900: #ff4100;
 }

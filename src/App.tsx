@@ -8,6 +8,9 @@ import enMessages from "./i18n/en.json";
 import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
+import Healthy from "./app/healthy/Healthy";
+import HealthyMeal from "./app/healthy/components/HealthyMeal";
+import HealthyLayout from "./app/healthy/HealthyLayout";
 
 // Messages map
 const messages = {
@@ -51,6 +54,23 @@ const router = createBrowserRouter([
         path: "about",
         element: <About />,
         errorElement: <Error />,
+      },
+      {
+        path: "healthy",
+        element: <HealthyLayout />,
+        errorElement: <Error />,
+        children: [
+          {
+            index: true,
+            element: <Healthy />,
+            errorElement: <Error />,
+          },
+          {
+            path: ":id",
+            element: <HealthyMeal />,
+            errorElement: <Error />,
+          },
+        ],
       },
     ],
   },
