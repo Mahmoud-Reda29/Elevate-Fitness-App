@@ -9,7 +9,7 @@ import arMessages from "./i18n/ar.json";
 import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import Healthy from "./app/healthy/Healthy";
-import HealthyMeal from "./app/healthy/components/HealthyMeal";
+// import HealthyMeal from "./app/healthy/components/HealthyMeal";
 import HealthyLayout from "./app/healthy/HealthyLayout";
 
 // Messages map
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":id",
-            element: <HealthyMeal />,
+            element: <Healthy />,
             errorElement: <Error />,
           },
         ],

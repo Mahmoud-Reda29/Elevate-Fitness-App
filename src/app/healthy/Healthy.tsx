@@ -9,7 +9,10 @@ import {
   // CarouselNext,
   // CarouselPrevious,
 } from "@/components/ui/carousel";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
+import HealthyMeal from "./components/HealthyMeal";
+import { useEffect, useState } from "react";
+import Navigation from "./components/Navigation";
 
 function chunkArray(arr: Meal[], size: number) {
   const result = [];
@@ -20,33 +23,56 @@ function chunkArray(arr: Meal[], size: number) {
 }
 
 export default function Healthy() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // Variables
   const [searchParams, setSearchParams] = useSearchParams();
+  const [currentMeal, setCurrentMeal] = useState("Lamb");
 
+  // Params
+  const { id } = useParams();
   const meal = searchParams.get("meal") || "breakfast";
 
+  useEffect(() => {
+    // Set query at url meal
+    setSearchParams({ meal: currentMeal });
+  }, [currentMeal, searchParams, setSearchParams]);
+
+  // Hooks
   const { data, isLoading } = useMeals(meal);
-  console.log("data useMeals", data);
+
+  // Loading
   if (isLoading || !data) return <LoadingSpinner />;
 
+  // Chunks for carousel
   const chunkedMeals = chunkArray(data, 6);
 
   return (
-    <Carousel>
-      <CarouselContent>
-        {chunkedMeals.map((group, index) => (
-          <CarouselItem key={index}>
-            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-              {group.map((meal, i) => (
-                <CardItem key={i} meal={meal} />
-              ))}
-            </div>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPagination />
-      {/* <CarouselPrevious />
-      <CarouselNext /> */}
-    </Carousel>
+    <div className="flex gap-8 p-10">
+      <div className="w-full">
+        {/* Navigation menu */}
+        <Navigation setCurrentMeal={setCurrentMeal} currentMeal={currentMeal} />
+
+        {/* Carousel */}
+        <Carousel className="w-full">
+          <CarouselContent>
+            {chunkedMeals.map((group, index) => (
+              <CarouselItem key={index}>
+                <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                  {group.map((meal, i) => (
+                    // Card
+                    <CardItem key={i} meal={meal} id={id || ""} />
+                  ))}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          {/* Pagination buttons */}
+          <CarouselPagination />
+        </Carousel>
+      </div>
+
+      {/* Selected meal */}
+      {id && <HealthyMeal id={id || "1"} />}
+    </div>
   );
 }
