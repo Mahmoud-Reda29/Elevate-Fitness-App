@@ -42,10 +42,10 @@ export default function CardItem({ meal, id }: CardItemProps) {
 
   // If `id` exists — render the compact version
   return (
-    <div className="max-w-sm border-gray-800 bg-gray-900 p-4">
+    <div className="border-b- max-w-sm border-gray-200 p-4">
       <div className="flex items-center gap-4">
         {/* Recipe Thumbnail */}
-        <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg">
+        <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl">
           <img src={meal.strMealThumb} alt={meal.strMeal} className="object-cover" />
         </div>
 

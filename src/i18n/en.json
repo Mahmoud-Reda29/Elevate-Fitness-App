@@ -2,5 +2,11 @@
   "hello": "Hello",
   "welcome": "Welcome to Elevate Fitness App",
   "homepage": "homepage",
-  "loading": "Loading"
+  "loading": "Loading",
+  "energy": "Energy",
+  "protein": "Protein",
+  "carbs": "Carbs",
+  "fat": "Fat",
+  "ingredients": "Ingredients",
+  "100-k": "100 k"
 }

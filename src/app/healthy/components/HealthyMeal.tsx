@@ -1,10 +1,13 @@
 import useMeal from "@/hooks/meal";
 import MealPlaceholder from "./MealPlaceholder";
+import { useTranslations } from "use-intl";
 
 export default function HealthyMeal({ id }: { id: string }) {
   // Hooks
   const { data, isLoading } = useMeal(id);
 
+  // Translation
+  const t = useTranslations();
   // Loading
   if (isLoading || !data) return <MealPlaceholder />;
 
@@ -24,16 +27,16 @@ export default function HealthyMeal({ id }: { id: string }) {
             {/* Nutrients facts */}
             <ul className="flex justify-between">
               <li className="flex flex-col items-center rounded-2xl border border-white p-1">
-                100 k<span className="text-custom-orange-900 font-bold">Energy</span>
+                100 k<span className="text-custom-orange-900 font-bold">{t("energy")}</span>
               </li>
               <li className="flex flex-col items-center rounded-2xl border border-white p-1">
-                100 g<span className="text-custom-orange-900 font-bold">Protein</span>
+                100 g<span className="text-custom-orange-900 font-bold">{t("protein")}</span>
               </li>
               <li className="flex flex-col items-center rounded-2xl border border-white p-1">
-                58 g<span className="text-custom-orange-900 font-bold">Carbs</span>
+                58 g<span className="text-custom-orange-900 font-bold">{t("carbs")}</span>
               </li>
               <li className="flex flex-col items-center rounded-2xl border border-white p-1">
-                20 g<span className="text-custom-orange-900 font-bold">Fat</span>
+                20 g<span className="text-custom-orange-900 font-bold">{t("fat")}</span>
               </li>
             </ul>
           </div>
@@ -42,7 +45,7 @@ export default function HealthyMeal({ id }: { id: string }) {
 
       {/* Ingredients Section */}
       <div className="relative p-4">
-        <h2 className="mb-6 text-xl font-semibold">Ingredients</h2>
+        <h2 className="mb-6 text-xl font-semibold">{t("ingredients")}</h2>
 
         {/* Ingredient */}
         <div className="flex flex-wrap gap-y-4">

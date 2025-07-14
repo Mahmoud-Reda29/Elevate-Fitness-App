@@ -26,7 +26,6 @@ export default function Healthy() {
   // Variables
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentMeal, setCurrentMeal] = useState("Lamb");
-
   // Params
   const { id } = useParams();
   const meal = searchParams.get("meal") || "breakfast";
@@ -44,6 +43,7 @@ export default function Healthy() {
 
   // Chunks for carousel
   const chunkedMeals = chunkArray(data, 6);
+  const isOnePage = data.length / chunkedMeals.length == data.length;
 
   return (
     <div className="flex gap-8 p-10">
@@ -65,9 +65,8 @@ export default function Healthy() {
               </CarouselItem>
             ))}
           </CarouselContent>
-
           {/* Pagination buttons */}
-          <CarouselPagination />
+          {!isOnePage && <CarouselPagination />}
         </Carousel>
       </div>
 
