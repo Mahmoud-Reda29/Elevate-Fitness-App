@@ -12,5 +12,9 @@
   "failed-login":"Failed Login",
   "success-login":"login successful",
   "hey-there":"Hey There,",
-  "welcome-back":"WELCOME BACK!"
+  "welcome-back":"WELCOME BACK!",
+  "home":"Home",
+  "about":"About",
+  "classes":"Classes",
+  "healthy":"Healthy"
 }

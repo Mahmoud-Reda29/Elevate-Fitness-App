@@ -1,4 +1,4 @@
-import { LoginAuth } from "@/components/apis/login-api";
+import { LoginAuth } from "@/components/apis/login.api";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { useTranslations } from "use-intl";

@@ -9,7 +9,6 @@ import {
 import { AlignRight } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useTranslations } from "use-intl";
-import { Button } from "../ui/button";
 export default function NavLinksRes() {
   // Translation
   const t = useTranslations();

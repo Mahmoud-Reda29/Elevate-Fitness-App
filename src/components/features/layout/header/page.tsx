@@ -5,19 +5,18 @@ import NavLinks from "./_components/navLinks";
 
 export default function Header() {
   return (
-    <div className="mx-auto flex justify-between items-center py-10 lg:px-0 px-4">
+    <header className="mx-auto flex items-center justify-between px-4 py-10 lg:px-0">
       {/* Logo */}
       <HeaderLogo />
 
-{/* Links */}
+      {/* Links */}
       <NavLinks />
-<div className="flex gap-5 items-center">
-      {/* Buttons */}
-      <ButtonsHeader/>
+      <div className="flex items-center gap-5">
+        {/* Buttons */}
+        <ButtonsHeader />
 
-      <NavLinksRes/>
-
-</div>
-    </div>
+        <NavLinksRes />
+      </div>
+    </header>
   );
 }

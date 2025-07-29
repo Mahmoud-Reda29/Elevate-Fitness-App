@@ -10,6 +10,7 @@ import { IntlProvider } from "use-intl";
 import { Toaster } from "sonner";
 import LoginForm from "./components/features/auth/login/login-form";
 import Homepage from "./app/homepage/page";
+import Classes from "./app/classes/page";
 
 // Messages map
 const messages = {
@@ -20,7 +21,7 @@ const messages = {
 // This wrapper reads the route param and wraps children with IntlProvider
 function LocaleWrapper({ children }: { children: React.ReactNode }) {
   const { lang } = useParams();
-  const locale = lang && (lang === "en" || lang === "ar") ? lang : "en";
+  const locale = lang && (lang === "en" || lang === "ar") ? lang : "en";  
 
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
@@ -32,7 +33,7 @@ function LocaleWrapper({ children }: { children: React.ReactNode }) {
 const router = createBrowserRouter([
   {
     // Root path that redirects to default language
-    path: "/",
+    path: "*",
     element: <Navigate to="/en" replace />,
   },
   {
@@ -54,6 +55,12 @@ const router = createBrowserRouter([
         element: <About />,
         errorElement: <Error />,
       },
+      {
+        path: "classes",
+        element: <Classes />,
+        errorElement: <Error />,
+      },
+      
       {
         path: "login",
         element: <LoginForm />,
