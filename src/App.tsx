@@ -12,7 +12,7 @@ import { Toaster } from "sonner";
 import AuthLayout from "./app/auth/layout";
 import ForgetPassword from "./app/auth/forget-password/page";
 import LoginPage from "./app/auth/login/page";
-import Signup from "./app/auth/signup/Signup";
+import Signup from "./app/auth/signup/page";
 
 // Messages map
 const messages = {
