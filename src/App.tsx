@@ -10,9 +10,9 @@ import { useParams } from "react-router-dom";
 import { IntlProvider } from "use-intl";
 import { Toaster } from "sonner";
 import AuthLayout from "./app/auth/layout";
-import SignupPage from "./app/auth/signup/page";
 import ForgetPassword from "./app/auth/forget-password/page";
 import LoginPage from "./app/auth/login/page";
+import Signup from "./app/auth/signup/Signup";
 
 // Messages map
 const messages = {
@@ -59,9 +59,10 @@ const router = createBrowserRouter([
       },
       {
         element: <AuthLayout />,
+        errorElement: <Error />,
         children: [
           { path: "login", element: <LoginPage /> },
-          { path: "signup", element: <SignupPage /> },
+          { path: "register", element: <Signup /> },
           { path: "forget-password", element: <ForgetPassword /> },
         ],
       },

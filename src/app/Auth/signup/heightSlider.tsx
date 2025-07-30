@@ -26,7 +26,7 @@ const HeightSlider: React.FC<HeightSliderProps> = ({ onHeightChange }) => {
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-md flex-col items-center rounded-xl bg-gray-900 p-6">
+    <div className="mx-auto flex w-full max-w-md flex-col items-center rounded-xl p-6">
       {/* Progress Indicator */}
       <CircleProgress text="4/6" />
 

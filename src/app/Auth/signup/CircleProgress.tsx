@@ -1,5 +1,3 @@
-import React from "react";
-
 const CircleProgress = ({ text = "5/6", color = "text-custom-orange-900" }) => {
   return (
     <div className="relative mx-auto mb-3.5 flex h-12 w-12 items-center justify-center rounded-full bg-transparent">

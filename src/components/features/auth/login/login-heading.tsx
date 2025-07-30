@@ -5,11 +5,11 @@ export default function LoginHeading() {
   const t = useTranslations();
 
   return (
-    <div className="mb-14 flex flex-col gap-7 text-center">
+    <div className="mb-14 flex flex-col gap-7 text-center text-white">
       {/* Heading */}
-      <p className="text-custom-black-900 text-sm">{t("hey-there")}</p>
+      <p className="text-sm">{t("hey-there")}</p>
 
-      <h2 className="text-custom-black-900 text-5xl font-extrabold">{t("welcome-back")}</h2>
+      <h2 className="text-5xl font-extrabold">{t("welcome-back")}</h2>
     </div>
   );
 }

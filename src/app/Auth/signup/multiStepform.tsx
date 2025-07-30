@@ -15,9 +15,9 @@ import ActivityLevel from "./ActivityLevel";
 import { z } from "zod";
 import WeightSlider from "./weightSlider";
 import HeightSlider from "./heightSlider";
-import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useTranslations } from "use-intl";
+import { LocalizedLink } from "@/components/common/localized-link";
 
 // Define the form data interface
 interface FormData {
@@ -179,7 +179,7 @@ const MultiStepForm: React.FC = () => {
 
     const result = validationSchema.safeParse(formData);
     if (!result.success) {
-      result.error.errors.forEach((err) => toast.error(err.message));
+      result.error.errors.forEach((err) => console.error(err.message));
       isValid = false;
     }
 
@@ -212,20 +212,19 @@ const MultiStepForm: React.FC = () => {
           headers: { "Content-Type": "application/json" },
         },
       );
-      toast.success("Registration successful!");
-      console.log("API response:", response.data);
+      console.log(response.data);
     } catch (error) {
       if (error instanceof z.ZodError) {
-        error.errors.forEach((err) => toast.error(err.message));
+        error.errors.forEach((err) => console.error(err.message));
       } else if (axios.isAxiosError(error)) {
         console.log("API Error:", error.response?.data);
         if (error.response?.data?.message) {
-          toast.error(error.response.data.message);
+          console.error(error.response.data.message);
         } else {
-          toast.error("An error occurred during registration.");
+          console.error("An error occurred during registration.");
         }
       } else {
-        toast.error("An unexpected error occurred.");
+        console.error("An unexpected error occurred.");
       }
     } finally {
       setIsSubmitting(false);
@@ -240,250 +239,203 @@ const MultiStepForm: React.FC = () => {
     setFormData((prev) => ({ ...prev, activityLevel }));
 
   return (
-    <div
-      className="flex h-screen"
-      style={{
-        background: "linear-gradient(135deg, #1a1a1a, #3a3a3a)",
-        fontFamily: "Inter, sans-serif",
-      }}
-    >
-      <div className="relative hidden h-screen w-1/2 md:block">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: "url(/cover.png)",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "60% auto",
-          }}
-        ></div>
-      </div>
-      <div className="bg-custom-orange-900 w-0.5"></div>
-      <div className="relative flex max-h-screen flex-1 items-center justify-center">
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000") center/cover',
-            filter: "blur(86px)",
-            opacity: 0.3,
-          }}
-        ></div>
-        <div className="z-10 w-full max-w-xl">
-          <div className="rounded-2xl">
-            <div className="text-custom-white-900 to-amber-500 p-6">
-              <p className="text-center text-lg">{step === 1 && t("hey-there")}</p>
-              <h2 className="mx-auto flex justify-center text-4xl font-bold">
-                {step === 1 && t("create-an-account")}
-              </h2>
-            </div>
-            <div>
-              <form onSubmit={step === 7 ? handleSubmit : (e) => e.preventDefault()}>
-                {step === 1 && (
-                  <div className="relative flex flex-1 items-center justify-center px-8">
-                    <div className="z-10 w-10/12 max-w-xl">
-                      <div className="border-custom-white-800 overflow-hidden rounded-4xl border">
-                        <div className="px-8 py-4">
-                          <div className="space-y-3">
-                            <p className="text-custom-white-900 text-center text-xl font-semibold">
-                              {t("register")}
-                            </p>
-                            <div className="relative">
-                              <input
-                                type="text"
-                                name="firstName"
-                                value={formData.firstName}
-                                onChange={handleChange}
-                                required
-                                className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder={t("first-name")}
-                              />
-                              <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
-                                <FiUser />
-                              </span>
-                            </div>
-                            <div className="relative">
-                              <input
-                                type="text"
-                                name="lastName"
-                                value={formData.lastName}
-                                onChange={handleChange}
-                                required
-                                className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder={t("last-name")}
-                              />
-                              <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
-                                <FiUser />
-                              </span>
-                            </div>
-                            <div className="relative">
-                              <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder={t("email")}
-                              />
-                              <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
-                                <MdOutlineMail />
-                              </span>
-                            </div>
-                            <div className="relative">
-                              <input
-                                type={showPassword ? "text" : "password"}
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                                minLength={8}
-                                className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder={t("password")}
-                              />
-                              <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
-                                <IoLockClosedOutline />
-                              </span>
-                              <span
-                                className="text-custom-white-800 absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-2xl"
-                                onClick={togglePasswordVisibility}
-                              >
-                                {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
-                              </span>
-                            </div>
-                            <div className="relative">
-                              <input
-                                type={showRePassword ? "text" : "password"}
-                                name="rePassword"
-                                value={formData.rePassword}
-                                onChange={handleChange}
-                                required
-                                minLength={8}
-                                className="text-custom-white-800 w-full rounded-4xl border border-gray-700 bg-gray-800 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
-                                placeholder={t("confirm-password")}
-                              />
-                              <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
-                                <IoLockClosedOutline />
-                              </span>
-                              <span
-                                className="text-custom-white-800 absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-2xl"
-                                onClick={toggleRePasswordVisibility}
-                              >
-                                {showRePassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="text-end">
-                            <a
-                              href="/forget-password"
-                              className="text-custom-orange-900 inline-block cursor-pointer border-b pt-2.5 font-semibold"
-                            >
-                              {t("forget-password")}
-                            </a>
-                          </div>
-                          <div className="flex items-center justify-center py-2.5">
-                            <div className="border-custom-white-800 w-24 border-t"></div>
-                            <span className="text-custom-white-800 mx-4">Or</span>
-                            <div className="border-custom-white-800 w-24 border-t"></div>
-                          </div>
-                          <div className="flex justify-center gap-4">
-                            <button
-                              type="button"
-                              className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full"
-                            >
-                              <FaFacebookF className="text-lg" />
-                            </button>
-                            <button
-                              type="button"
-                              className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full text-lg"
-                            >
-                              <FaGoogle />
-                            </button>
-                            <button
-                              type="button"
-                              className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full text-lg"
-                            >
-                              <FaApple />
-                            </button>
-                          </div>
-                          <div className="mt-2 flex justify-end">
-                            <button
-                              type="button"
-                              onClick={nextStep}
-                              className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
-                            >
-                              {t("register")}
-                            </button>
-                          </div>
-                          <div className="text-custom-white-900 mt-2 text-center text-sm">
-                            {t("already-have-an-account")}
-                            <a href="#" className="text-custom-orange-900 underline">
-                              {t("login")}
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {step === 2 && (
-                  <div className="flex items-center justify-center">
-                    <div className="rounded-xl p-8 backdrop-blur-md">
-                      {/* Progress Indicator */}
-                      <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
-                        {/* Orange Arc */}
-                        <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
-
-                        {/* Step Text */}
-                        <span className="text-custom-white-900 z-10 text-sm font-medium">1/6</span>
-                      </div>
-
-                      <div className="mb-4 text-center">
-                        <h2 className="text-custom-white-900 text-3xl font-bold">
-                          {t("tell-us-about-yourself")}
-                        </h2>
-                        <p className="text-custom-white-900 mt-2">
-                          {t("we-need-to-know-your-gender")}
+    <div className="z-10 w-full max-w-xl">
+      <div className="rounded-2xl">
+        <div className="text-custom-white-900 to-amber-500 p-6">
+          <p className="text-center text-lg">{step === 1 && t("hey-there")}</p>
+          <h2 className="mx-auto flex justify-center text-4xl font-bold">
+            {step === 1 && t("create-an-account")}
+          </h2>
+        </div>
+        <div>
+          <form onSubmit={step === 7 ? handleSubmit : (e) => e.preventDefault()}>
+            {step === 1 && (
+              <div className="relative flex flex-1 items-center justify-center px-8">
+                <div className="z-10 w-10/12 max-w-xl">
+                  <div className="border-custom-white-800 overflow-hidden rounded-4xl border">
+                    <div className="px-8 py-4">
+                      <div className="space-y-3">
+                        <p className="text-custom-white-900 text-center text-xl font-semibold">
+                          {t("register")}
                         </p>
-                      </div>
-                      <div className="space-y-6">
-                        <div className="space-y-2">
-                          <div className="grid grid-cols-2 gap-4">
-                            {["Male", "Female"].map((gender) => (
-                              <button
-                                key={gender}
-                                type="button"
-                                onClick={() => setFormData((prev) => ({ ...prev, gender }))}
-                                className={`mx-auto flex h-24 w-24 cursor-pointer flex-col items-center justify-center rounded-full border border-white transition-all ${
-                                  formData.gender === gender
-                                    ? "text-custom-white-800 bg-white"
-                                    : "text-custom-white-900 bg-transparent"
-                                }`}
-                              >
-                                <span className="text-custom-white-900 text-2xl">
-                                  {gender === "Male" ? <IoMaleSharp /> : <IoFemale />}
-                                </span>
-                                <span className="mt-1">{gender}</span>
-                              </button>
-                            ))}
-                          </div>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="firstName"
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            required
+                            className="text-custom-white-800 placeholder:text-custom-white-800 w-full rounded-4xl border border-gray-700 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                            placeholder={t("first-name")}
+                          />
+                          <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
+                            <FiUser />
+                          </span>
                         </div>
-                        <div className="mt-8 flex justify-between">
-                          <button
-                            type="button"
-                            onClick={nextStep}
-                            className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="lastName"
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            required
+                            className="text-custom-white-800 placeholder:text-custom-white-800 w-full rounded-4xl border border-gray-700 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                            placeholder={t("last-name")}
+                          />
+                          <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
+                            <FiUser />
+                          </span>
+                        </div>
+                        <div className="relative">
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="text-custom-white-800 placeholder:text-custom-white-800 w-full rounded-4xl border border-gray-700 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                            placeholder={t("email")}
+                          />
+                          <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
+                            <MdOutlineMail />
+                          </span>
+                        </div>
+                        <div className="relative">
+                          <input
+                            type={showPassword ? "text" : "password"}
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                            minLength={8}
+                            className="text-custom-white-800 placeholder:text-custom-white-800 w-full rounded-4xl border border-gray-700 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                            placeholder={t("password")}
+                          />
+                          <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
+                            <IoLockClosedOutline />
+                          </span>
+                          <span
+                            className="text-custom-white-800 absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-2xl"
+                            onClick={togglePasswordVisibility}
                           >
-                            {t("next")}
-                          </button>
+                            {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+                          </span>
                         </div>
+                        <div className="relative">
+                          <input
+                            type={showRePassword ? "text" : "password"}
+                            name="rePassword"
+                            value={formData.rePassword}
+                            onChange={handleChange}
+                            required
+                            minLength={8}
+                            className="text-custom-white-800 placeholder:text-custom-white-800 w-full rounded-4xl border border-gray-700 px-10 py-2 focus:ring-2 focus:ring-orange-500 focus:outline-none"
+                            placeholder={t("confirm-password")}
+                          />
+                          <span className="text-custom-white-800 absolute top-1/2 left-3 -translate-y-1/2 transform">
+                            <IoLockClosedOutline />
+                          </span>
+                          <span
+                            className="text-custom-white-800 absolute top-1/2 right-3 -translate-y-1/2 transform cursor-pointer text-2xl"
+                            onClick={toggleRePasswordVisibility}
+                          >
+                            {showRePassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-end">
+                        <LocalizedLink
+                          to="/forget-password"
+                          className="text-custom-orange-900 inline-block cursor-pointer border-b pt-2.5 font-semibold"
+                        >
+                          {t("forget-password")}
+                        </LocalizedLink>
+                      </div>
+                      <div className="flex items-center justify-center py-2.5">
+                        <div className="border-custom-white-800 w-24 border-t"></div>
+                        <span className="text-custom-white-800 mx-4">Or</span>
+                        <div className="border-custom-white-800 w-24 border-t"></div>
+                      </div>
+                      <div className="flex justify-center gap-4">
+                        <button
+                          type="button"
+                          className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full"
+                        >
+                          <FaFacebookF className="text-lg" />
+                        </button>
+                        <button
+                          type="button"
+                          className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full text-lg"
+                        >
+                          <FaGoogle />
+                        </button>
+                        <button
+                          type="button"
+                          className="bg-custom-black-700 text-custom-white-800 flex h-10 w-10 items-center justify-center rounded-full text-lg"
+                        >
+                          <FaApple />
+                        </button>
+                      </div>
+                      <div className="mt-2 flex justify-end">
+                        <button
+                          type="button"
+                          onClick={nextStep}
+                          className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
+                        >
+                          {t("register")}
+                        </button>
+                      </div>
+                      <div className="text-custom-white-900 mt-2 text-center text-sm">
+                        {t("already-have-an-account")}{" "}
+                        <LocalizedLink to="/login" className="text-custom-orange-900 underline">
+                          {t("login")}
+                        </LocalizedLink>
                       </div>
                     </div>
                   </div>
-                )}
-                {step === 3 && (
-                  <div className="d-flex items-center justify-center space-y-6 p-8">
-                    <AgeSlider onAgeChange={handleAgeChange} />
+                </div>
+              </div>
+            )}
+            {step === 2 && (
+              <div className="flex items-center justify-center">
+                <div className="rounded-xl p-8 backdrop-blur-md">
+                  {/* Progress Indicator */}
+                  <div className="relative mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-transparent">
+                    {/* Orange Arc */}
+                    <div className="border-custom-orange-900 absolute inset-0 rotate-[10deg] rounded-full border-4 border-t-transparent border-b-transparent border-l-transparent"></div>
+
+                    {/* Step Text */}
+                    <span className="text-custom-white-900 z-10 text-sm font-medium">1/6</span>
+                  </div>
+
+                  <div className="mb-4 text-center">
+                    <h2 className="text-custom-white-900 text-3xl font-bold">
+                      {t("tell-us-about-yourself")}
+                    </h2>
+                    <p className="text-custom-white-900 mt-2">{t("we-need-to-know-your-gender")}</p>
+                  </div>
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <div className="grid grid-cols-2 gap-4">
+                        {["Male", "Female"].map((gender) => (
+                          <button
+                            key={gender}
+                            type="button"
+                            onClick={() => setFormData((prev) => ({ ...prev, gender }))}
+                            className={`mx-auto flex h-24 w-24 cursor-pointer flex-col items-center justify-center rounded-full border border-white transition-all ${
+                              formData.gender === gender
+                                ? "text-custom-orange-900 bg-white"
+                                : "text-custom-white-900 bg-transparent"
+                            }`}
+                          >
+                            <span className="text-custom-white-900 text-2xl">
+                              {gender === "Male" ? <IoMaleSharp /> : <IoFemale />}
+                            </span>
+                            <span className="mt-1">{gender}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                     <div className="mt-8 flex justify-between">
                       <button
                         type="button"
@@ -494,81 +446,84 @@ const MultiStepForm: React.FC = () => {
                       </button>
                     </div>
                   </div>
-                )}
-                {step === 4 && (
-                  <div className="d-flex items-center justify-center space-y-6 p-8">
-                    <WeightSlider onWeightChange={handleWeightChange} />
-                    <div className="mt-8 flex justify-between">
-                      <button
-                        type="button"
-                        onClick={nextStep}
-                        className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
-                      >
-                        {t("next")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-                {step === 5 && (
-                  <div className="d-flex items-center justify-center space-y-6">
-                    <HeightSlider onHeightChange={handleHeightChange} />
-                    <div className="mt-8 flex justify-between">
-                      <button
-                        type="button"
-                        onClick={nextStep}
-                        className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
-                      >
-                        {t("next")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-                {step === 6 && (
-                  <div className="flex flex-col items-center justify-center">
-                    <GoalSlider onGoalChange={handleGoalChange} />
-                    <div className="mt-8 flex w-100 justify-between">
-                      <button
-                        type="button"
-                        onClick={nextStep}
-                        className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
-                      >
-                        {t("next")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-                {step === 7 && (
-                  <div className="flex flex-col items-center justify-center">
-                    <ActivityLevel onActivityChange={handleActivityLevelChange} />
-                    <div className="mt-8 flex w-100 justify-between">
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className={`text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer hover:to-emerald-700 ${
-                          isSubmitting ? "cursor-not-allowed opacity-50" : ""
-                        }`}
-                      >
-                        {isSubmitting ? t("submitting") + "..." : t("complete-registration")}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </form>
-            </div>
-          </div>
+                </div>
+              </div>
+            )}
+            {step === 3 && (
+              <div className="d-flex items-center justify-center space-y-6 p-8">
+                <AgeSlider onAgeChange={handleAgeChange} />
+                <div className="mt-8 flex justify-between">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-2 transition-all hover:cursor-pointer"
+                  >
+                    {t("next")}
+                  </button>
+                </div>
+              </div>
+            )}
+            {step === 4 && (
+              <div className="d-flex items-center justify-center space-y-6 p-8">
+                <WeightSlider onWeightChange={handleWeightChange} />
+                <div className="mt-8 flex justify-between">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
+                  >
+                    {t("next")}
+                  </button>
+                </div>
+              </div>
+            )}
+            {step === 5 && (
+              <div className="d-flex items-center justify-center space-y-6">
+                <HeightSlider onHeightChange={handleHeightChange} />
+                <div className="mt-8 flex justify-between">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
+                  >
+                    {t("next")}
+                  </button>
+                </div>
+              </div>
+            )}
+            {step === 6 && (
+              <div className="flex flex-col items-center justify-center">
+                <GoalSlider onGoalChange={handleGoalChange} />
+                <div className="mt-8 flex w-100 justify-between">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer"
+                  >
+                    {t("next")}
+                  </button>
+                </div>
+              </div>
+            )}
+            {step === 7 && (
+              <div className="flex flex-col items-center justify-center">
+                <ActivityLevel onActivityChange={handleActivityLevelChange} />
+                <div className="mt-8 flex w-100 justify-between">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`text-custom-white-900 bg-custom-orange-900 mx-auto flex w-3/4 items-center justify-center gap-2 rounded-3xl px-8 py-3 transition-all hover:cursor-pointer hover:to-emerald-700 ${
+                      isSubmitting ? "cursor-not-allowed opacity-50" : ""
+                    }`}
+                  >
+                    {isSubmitting ? t("submitting") + "..." : t("complete-registration")}
+                  </button>
+                </div>
+              </div>
+            )}
+          </form>
         </div>
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </div>
   );
 };
