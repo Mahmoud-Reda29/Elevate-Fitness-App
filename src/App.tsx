@@ -12,7 +12,7 @@ import { Toaster } from "sonner";
 import AuthLayout from "./app/auth/layout";
 import ForgetPassword from "./app/auth/forget-password/page";
 import LoginPage from "./app/auth/login/page";
-import SignUp from "./app/auth/signup/page";
+import Register from "./app/auth/register/page";
 
 // Messages map
 const messages = {
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         errorElement: <Error />,
         children: [
           { path: "login", element: <LoginPage /> },
-          { path: "register", element: <SignUp /> },
+          { path: "register", element: <Register /> },
           { path: "forget-password", element: <ForgetPassword /> },
         ],
       },
