@@ -1,0 +1,81 @@
+import React, { useState, useRef } from "react";
+import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
+import "swiper/css";
+import { useTranslations } from "use-intl";
+import CircleProgress from "./CircleProgress";
+
+const MIN_WEIGHT = 40;
+const MAX_WEIGHT = 150;
+
+interface WeightSliderProps {
+  onWeightChange?: (weight: number) => void; // Callback prop to send selected weight to parent
+}
+
+const WeightSlider: React.FC<WeightSliderProps> = ({ onWeightChange }) => {
+  const [selectedWeight, setSelectedWeight] = useState<number>(70); // Default weight
+  const swiperRef = useRef<SwiperRef>(null);
+  const weights = Array.from({ length: MAX_WEIGHT - MIN_WEIGHT + 1 }, (_, i) => MIN_WEIGHT + i);
+  const t = useTranslations();
+
+  const handleSlideChange = (swiper: { activeIndex: number }) => {
+    const newWeight = weights[swiper.activeIndex];
+    setSelectedWeight(newWeight);
+    if (onWeightChange) {
+      onWeightChange(newWeight); // Send the selected weight to the parent component
+    }
+  };
+
+  return (
+    <div className="mx-auto flex w-full max-w-md flex-col items-center rounded-xl p-6">
+      {/* Progress Indicator */}
+      <CircleProgress text="3/6" />
+
+      {/* Heading and Subheading */}
+      <div className="text-center">
+        <h2 className="text-custom-white-900 my-4 text-2xl font-bold">
+          {t("what-is-your-weight")}
+        </h2>
+        <p className="text-custom-white-900 my-4">
+          {t("this-helps-us-create-your-personalized-plan-2")}
+        </p>
+      </div>
+      <div className="text-custom-orange-900 mb-4 text-lg font-semibold tracking-wide">
+        {t("kilograms")}
+      </div>
+      <div className="relative w-full">
+        <Swiper
+          ref={swiperRef}
+          onSlideChange={handleSlideChange}
+          slidesPerView={5}
+          centeredSlides
+          initialSlide={selectedWeight - MIN_WEIGHT}
+          spaceBetween={2} // Reduced space between weights
+          className="w-full"
+          role="slider"
+          aria-label="Weight selection slider"
+        >
+          {weights.map((weight) => (
+            <SwiperSlide key={weight} className="m-0 p-0">
+              <span
+                className={`block text-center transition-all duration-200 ${
+                  weight === selectedWeight
+                    ? "text-custom-orange-900 text-3xl font-bold"
+                    : "text-custom-white-800 text-xl opacity-60"
+                }`}
+              >
+                {weight}
+              </span>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Triangle Indicator */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2">
+          <div className="border-b-custom-orange-900 h-0 w-0 border-r-[8px] border-b-[8px] border-l-[8px] border-r-transparent border-l-transparent" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WeightSlider;
